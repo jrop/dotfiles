@@ -1,0 +1,12 @@
+"*":
+  core:
+    themes: [
+      "atom-dark-ui"
+      "atom-dark-syntax"
+    ]
+  editor:
+    showInvisibles: true
+    softTabs: false
+    tabType: "hard"
+  welcome:
+    showOnStartup: false
