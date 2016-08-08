@@ -1,0 +1,29 @@
+general {
+	output_format = "i3bar"
+	colors = true
+	interval = 5
+}
+
+order += "disk /"
+order += "battery 0"
+order += "load"
+order += "tztime local"
+
+disk "/" {
+        format = "%free"
+}
+
+battery 0 {
+        format = "BAT %percentage"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+load {
+        format = "LOAD %5min"
+}
+
+tztime local {
+        format = "%Y-%m-%d %I:%M:%S %p"
+}
+

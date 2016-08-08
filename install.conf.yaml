@@ -9,10 +9,12 @@
     ~/.dotfiles: ''
     ~/.atom/config.cson: config/atom/config.cson
     ~/.bashrc: config/bash/bashrc
+    ~/.config/gtk-3.0/gtk.css: config/gtk-3.0/gtk.css
+    ~/.config/i3/config: config/i3/config
+    ~/.config/i3status/config: config/i3status/config
+    ~/.config/nvim/init.vim: config/nvim/init.vim
     ~/.profile: config/bash/profile
     ~/.tmux.conf: config/tmux/tmux.conf
-    ~/.config/nvim/init.vim: config/nvim/init.vim
-    ~/.config/gtk-3.0/gtk.css: config/gtk-3.0/gtk.css
 
 - shell:
     - git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack

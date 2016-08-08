@@ -14,3 +14,7 @@ let g:lightline = {
 	\ 'separator': { 'left': '', 'right': '' },
 	\ 'subseparator': { 'left': '', 'right': '' }
 	\ }
+
+set tabstop=2
+set shiftwidth=2
+
