@@ -1,12 +1,6 @@
-source ~/antigen.zsh
-antigen use oh-my-zsh
-antigen theme robbyrussell
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-autosuggestions
-antigen apply
-
+[ -z "$TMUX" ] && EVENT_NOKQUEUE=1 tmux
 bindkey -v
+bindkey '^?' backward-delete-char
 bindkey jj vi-cmd-mode
 
 TRAPINT() {
@@ -14,8 +8,15 @@ TRAPINT() {
 	return $(( 128 + $1 ))
 }
 
-fpath=(~/.zsh-completion-scripts $fpath)
-autoload -U compinit
-compinit
+source ~/antigen.zsh
+antigen use oh-my-zsh
+antigen theme robbyrussell
 
-[ -z "$TMUX" ] && tmux
+antigen bundle docker
+antigen bundle git
+antigen bundle tmux
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen apply
