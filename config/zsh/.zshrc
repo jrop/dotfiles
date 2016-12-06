@@ -4,6 +4,9 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/scripts/init.zsh
 
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
 node_prompt() {
 	node ~/.zsh/prompt.js
 }
