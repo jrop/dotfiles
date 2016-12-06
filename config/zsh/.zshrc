@@ -1,23 +1,19 @@
 [ -z "$TMUX" ] && EVENT_NOKQUEUE=1 tmux
 
-TRAPINT() {
-	print -n "^C"
-	return $(( 128 + $1 ))
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/scripts/init.zsh
+
+node_prompt() {
+	node ~/.zsh/prompt.js
 }
-
-source ~/antigen.zsh
-antigen use oh-my-zsh
-antigen theme robbyrussell
-
-antigen bundle docker
-antigen bundle git
-antigen bundle tmux
-
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-autosuggestions
-antigen apply
+setopt PROMPT_SUBST
+PROMPT='$(node_prompt)'
 
 bindkey -v
 bindkey '^?' backward-delete-char
 bindkey jj vi-cmd-mode
+
+fpath=(~/.zsh/completions $fpath)
+autoload -U compinit
+compinit
