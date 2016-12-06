@@ -1,7 +1,4 @@
 [ -z "$TMUX" ] && EVENT_NOKQUEUE=1 tmux
-bindkey -v
-bindkey '^?' backward-delete-char
-bindkey jj vi-cmd-mode
 
 TRAPINT() {
 	print -n "^C"
@@ -20,3 +17,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
+
+bindkey -v
+bindkey '^?' backward-delete-char
+bindkey jj vi-cmd-mode
