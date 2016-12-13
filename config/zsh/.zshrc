@@ -17,13 +17,11 @@ TRAPINT() {
 }
 precmd() {
 	IS_PROMPTING=true
-	MY_PROMPT=$(node ~/.zsh/prompt.js)
+	PROMPT=$(node ~/.zsh/prompt.js)
 }
 preexec() {
 	IS_PROMPTING=false
 }
-setopt PROMPT_SUBST
-PROMPT='${MY_PROMPT}'
 
 bindkey -v
 bindkey '^?' backward-delete-char
