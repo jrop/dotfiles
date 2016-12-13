@@ -6,12 +6,24 @@ source ~/.zsh/scripts/init.zsh
 
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
 
-node_prompt() {
-	node ~/.zsh/prompt.js
+TRAPINT() {
+	if [ "$IS_PROMPTING" == true ]; then
+		print -n "^C"
+		return $(( 128 + $1 ))
+	fi
+}
+precmd() {
+	IS_PROMPTING=true
+	MY_PROMPT=$(node ~/.zsh/prompt.js)
+}
+preexec() {
+	IS_PROMPTING=false
 }
 setopt PROMPT_SUBST
-PROMPT='$(node_prompt)'
+PROMPT='${MY_PROMPT}'
 
 bindkey -v
 bindkey '^?' backward-delete-char
