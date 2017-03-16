@@ -12,7 +12,7 @@ setopt SHARE_HISTORY
 setopt AUTO_CD
 
 TRAPINT() {
-	if [ "$IS_PROMPTING" == true ]; then
+	if [ "$IS_PROMPTING" = true ]; then
 		print -n "^C"
 		return $(( 128 + $1 ))
 	fi
