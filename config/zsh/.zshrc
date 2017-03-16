@@ -9,6 +9,8 @@ HISTFILE=~/.zsh_history
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 
+setopt AUTO_CD
+
 TRAPINT() {
 	if [ "$IS_PROMPTING" == true ]; then
 		print -n "^C"

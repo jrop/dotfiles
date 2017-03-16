@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-source ~/.nvm/nvm.sh
 export PATH=./node_modules/.bin:$PATH
 
 _is-tunnel() {
@@ -25,3 +24,4 @@ registry-laplata() {
 registry() {
 	npm set registry https://registry.npmjs.org/
 }
+
