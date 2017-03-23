@@ -1,5 +1,3 @@
-[ -z "$TMUX" ] && EVENT_NOKQUEUE=1 tmux
-
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/scripts/init.zsh
