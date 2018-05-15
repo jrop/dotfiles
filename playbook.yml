@@ -19,21 +19,6 @@
         - net-tools
         - tig
         - tmux
-        # - alien
-        # - arronax
-        # - code
-        # - docker-ce
-        # - gnome-shell-extensions-gpaste
-        # - gnome-tweak-tool
-        # - google-chrome-stable
-        # - gpaste
-        # - gstreamer1.0-plugins-bad
-        # - gstreamer1.0-plugins-ugly
-        # - libdvdcss2
-        # - network-manager-openvpn-gnome
-        # - openvpn
-        # - ubuntu-gnome-desktop
-        # - vlc
     - name: Setup VSCode
       become: yes
       become_user: root
@@ -65,6 +50,12 @@
               "workbench.editor.showTabs": true,
               "npm.enableScriptExplorer": true
             }
+    - name: Setup vi alternatives to use NeoVim
+      become: yes
+      become_user: root
+      alternatives:
+        name: vi
+        path: /usr/bin/nvim
     - name: Setup NeoVim
       become: yes
       become_user: '{{dotfiles_user}}'
