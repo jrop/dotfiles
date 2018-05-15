@@ -1,15 +1,10 @@
 dotfiles
 ========
 
-## Prerequisites
+My dotfiles, delivered via Ansible.
 
-You will need the powerline fonts installed.
-
-## Installation
+## Install
 
 ```sh
-git clone --recursive -j99 https://github.com/jrop/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-cp dotbot/tools/git-submodule/install .
-./install
+curl -sSL https://raw.githubusercontent.com/jrop/dotfiles/master/install.sh | sh
 ```

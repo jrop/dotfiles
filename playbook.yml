@@ -1,0 +1,83 @@
+- hosts: localhost
+  tasks:
+    - name: Install packages
+      become: yes
+      become_user: root
+      apt:
+        name: '{{item}}'
+      with_items:
+        - ansible
+        - build-essential
+        - curl
+        - git
+        - git-extras
+        - git-gui
+        - gitk
+        - jq
+        - neofetch
+        - neovim
+        - net-tools
+        - tig
+        - tmux
+        # - alien
+        # - arronax
+        # - code
+        # - docker-ce
+        # - gnome-shell-extensions-gpaste
+        # - gnome-tweak-tool
+        # - google-chrome-stable
+        # - gpaste
+        # - gstreamer1.0-plugins-bad
+        # - gstreamer1.0-plugins-ugly
+        # - libdvdcss2
+        # - network-manager-openvpn-gnome
+        # - openvpn
+        # - ubuntu-gnome-desktop
+        # - vlc
+    - name: Setup VSCode
+      become: yes
+      become_user: root
+      import_role:
+        name: ansible-role-visual-studio-code
+      vars:
+        users:
+          - username: '{{dotfiles_user}}'
+            visual_studio_code_extensions:
+              - esbenp.prettier-vscode
+              - dbaeumer.vscode-eslint
+            visual_studio_code_settings: {
+              "editor.detectIndentation": false,
+              "editor.insertSpaces": false,
+              "editor.fontSize": 15,
+              "editor.renderWhitespace": "boundary",
+              "editor.tabSize": 2,
+              "editor.smoothScrolling": true,
+              "terminal.integrated.fontSize": 15,
+              "prettier.useTabs": true,
+              "prettier.semi": false,
+              "prettier.singleQuote": true,
+              "prettier.trailingComma": "es5",
+              "prettier.bracketSpacing": false,
+              "prettier.jsxBracketSameLine": true,
+              "explorer.confirmDragAndDrop": false,
+              "explorer.confirmDelete": false,
+              "window.menuBarVisibility": "toggle",
+              "workbench.editor.showTabs": true,
+              "npm.enableScriptExplorer": true
+            }
+    - name: Setup NeoVim
+      become: yes
+      become_user: '{{dotfiles_user}}'
+      block:
+        - file:
+            path: ~/.config/nvim/
+            state: directory
+        - copy:
+            src: files/init.vim
+            dest: ~/.config/nvim/init.vim
+    - name: Setup TMUX
+      become: yes
+      become_user: '{{dotfiles_user}}'
+      copy:
+        src: files/tmux.conf
+        dest: ~/tmux.conf
