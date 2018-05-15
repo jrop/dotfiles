@@ -50,6 +50,7 @@
               "workbench.editor.showTabs": true,
               "npm.enableScriptExplorer": true
             }
+      when: dotfiles_install_code
     - name: Setup vi alternatives to use NeoVim
       become: yes
       become_user: root
