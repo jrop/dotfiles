@@ -19,6 +19,14 @@
         - net-tools
         - tig
         - tmux
+      tags: pkgs
+    - name: Setup vi alternatives to use NeoVim
+      become: yes
+      become_user: root
+      alternatives:
+        name: vi
+        path: /usr/bin/nvim
+      tags: pkgs
     - name: Setup VSCode
       become: yes
       become_user: root
@@ -50,13 +58,14 @@
               "workbench.editor.showTabs": true,
               "npm.enableScriptExplorer": true
             }
-      when: dotfiles_install_code
-    - name: Setup vi alternatives to use NeoVim
+      tags: vscode
+    - name: Setup Vim
       become: yes
-      become_user: root
-      alternatives:
-        name: vi
-        path: /usr/bin/nvim
+      become_user: '{{dotfiles_user}}'
+      copy:
+        src: files/vimrc
+        dest: ~/.vimrc
+      tags: always
     - name: Setup NeoVim
       become: yes
       become_user: '{{dotfiles_user}}'
@@ -67,9 +76,11 @@
         - copy:
             src: files/init.vim
             dest: ~/.config/nvim/init.vim
+      tags: always
     - name: Setup TMUX
       become: yes
       become_user: '{{dotfiles_user}}'
       copy:
         src: files/tmux.conf
         dest: ~/.tmux.conf
+      tags: always

@@ -1,0 +1,10 @@
+set number
+
+hi NonText ctermfg=DarkGray guifg=gray
+hi SpecialKey ctermfg=DarkGray
+set listchars=eol:$,trail:·,tab:»\ ,extends:>,precedes:<,nbsp:.
+set list
+
+set tabstop=2
+set shiftwidth=2
+imap jj <Esc>
