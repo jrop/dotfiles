@@ -72,4 +72,4 @@
       become_user: '{{dotfiles_user}}'
       copy:
         src: files/tmux.conf
-        dest: ~/tmux.conf
+        dest: ~/.tmux.conf
