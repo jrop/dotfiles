@@ -1,0 +1,8 @@
+[user]
+	email = jrapodaca@gmail.com
+	name = Jonathan Apodaca
+
+[alias]
+	l = log --graph --oneline --branches --decorate --all
+	hist = show --stat
+

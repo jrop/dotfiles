@@ -84,3 +84,10 @@
         src: files/tmux.conf
         dest: ~/.tmux.conf
       tags: always
+    - name: Setup Git
+      become: yes
+      become_user: '{{dotfiles_user}}'
+      copy:
+        src: files/gitconfig
+        dest: ~/.gitconfig
+      tags: always
