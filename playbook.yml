@@ -68,6 +68,19 @@
               "npm.enableScriptExplorer": true
             }
       tags: vscode
+    - name: Setup PATH/LD_LIBRARY_PATH to include .local/{bin,lib}
+      become: yes
+      become_user: '{{dotfiles_user}}'
+      block:
+        - file: path=~/.local/bin state=directory
+        - file: path=~/.local/lib state=directory
+        - blockinfile:
+            path: ~/.bashrc
+            insertafter: EOF
+            block: |
+              export PATH="~/.local/bin:$PATH"
+              export LD_LIBRARY_PATH="~/.local/lib:$LD_LIBRARY_PATH"
+      tags: always
     - name: Setup Vim
       become: yes
       become_user: '{{dotfiles_user}}'
