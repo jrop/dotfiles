@@ -1,5 +1,14 @@
 - hosts: localhost
   tasks:
+    - name: Get host user
+      block:
+        - name: whoami
+          local_action: command whoami
+          changed_when: false
+          register: dotfiles_user_cmd
+        - name: Set dotfiles_user
+          set_fact: dotfiles_user={{dotfiles_user_cmd.stdout}}
+      tags: always
     - name: Install packages
       become: yes
       become_user: root
