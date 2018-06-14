@@ -6,6 +6,7 @@
           local_action: command whoami
           changed_when: false
           register: dotfiles_user_cmd
+          check_mode: no
         - name: Set dotfiles_user
           set_fact: dotfiles_user={{dotfiles_user_cmd.stdout}}
       tags: always
@@ -68,16 +69,19 @@
               "npm.enableScriptExplorer": true
             }
       tags: vscode
-    - name: Setup PATH/LD_LIBRARY_PATH to include .local/{bin,lib}
+    - name: Setup .bashrc
       become: yes
       become_user: '{{dotfiles_user}}'
       block:
         - file: path=~/.local/bin state=directory
         - file: path=~/.local/lib state=directory
-        - blockinfile:
+        - name: .bashrc
+          blockinfile:
             path: ~/.bashrc
             insertafter: EOF
             block: |
+              alias mon="tmux set mouse on"
+              alias moff="tmux set mouse off"
               export PATH="~/.local/bin:$PATH"
               export LD_LIBRARY_PATH="~/.local/lib:$LD_LIBRARY_PATH"
       tags: always
