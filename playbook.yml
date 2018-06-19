@@ -80,6 +80,16 @@
             path: ~/.bashrc
             insertafter: EOF
             block: |
+              function sst() {
+                if [ $# -lt 2 ]; then
+                  echo "Usage: sst [subdomain] [port]"
+                  exit 1
+                fi
+                sub=$1
+                port=$2
+                ssh -R $sub:80:localhost:$port serveo.net
+              }
+              alias dclean="docker images -qf dangling=true | xargs -n 1 docker rmi"
               alias mon="tmux set mouse on"
               alias moff="tmux set mouse off"
               export PATH="~/.local/bin:$PATH"
