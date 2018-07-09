@@ -1,5 +1,15 @@
 - hosts: localhost
   tasks:
+    - name: Get host user
+      block:
+        - name: whoami
+          local_action: command whoami
+          changed_when: false
+          register: dotfiles_user_cmd
+          check_mode: no
+        - name: Set dotfiles_user
+          set_fact: dotfiles_user={{dotfiles_user_cmd.stdout}}
+      tags: always
     - name: Install packages
       become: yes
       become_user: root
@@ -59,6 +69,32 @@
               "npm.enableScriptExplorer": true
             }
       tags: vscode
+    - name: Setup .bashrc
+      become: yes
+      become_user: '{{dotfiles_user}}'
+      block:
+        - file: path=~/.local/bin state=directory
+        - file: path=~/.local/lib state=directory
+        - name: .bashrc
+          blockinfile:
+            path: ~/.bashrc
+            insertafter: EOF
+            block: |
+              function sst() {
+                if [ $# -lt 2 ]; then
+                  echo "Usage: sst [subdomain] [port]"
+                  exit 1
+                fi
+                sub=$1
+                port=$2
+                ssh -R $sub:80:localhost:$port serveo.net
+              }
+              alias dclean="docker images -qf dangling=true | xargs -n 1 docker rmi"
+              alias mon="tmux set mouse on"
+              alias moff="tmux set mouse off"
+              export PATH="~/.local/bin:$PATH"
+              export LD_LIBRARY_PATH="~/.local/lib:$LD_LIBRARY_PATH"
+      tags: always
     - name: Setup Vim
       become: yes
       become_user: '{{dotfiles_user}}'
