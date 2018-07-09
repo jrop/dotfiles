@@ -3,6 +3,6 @@
 	name = Jonathan Apodaca
 
 [alias]
-	l = log --graph --oneline --branches --decorate --all
 	hist = show --stat
-
+	l = log --graph --oneline --branches --decorate --all
+	status = status -s
