@@ -1,15 +1,6 @@
 - hosts: localhost
   tasks:
-    - name: Get host user
-      block:
-        - name: whoami
-          local_action: command whoami
-          changed_when: false
-          register: dotfiles_user_cmd
-          check_mode: no
-        - name: Set dotfiles_user
-          set_fact: dotfiles_user={{dotfiles_user_cmd.stdout}}
-      tags: always
+    - import_tasks: who.yml
     - name: Install packages
       become: yes
       become_user: root
@@ -37,38 +28,6 @@
         name: vi
         path: /usr/bin/nvim
       tags: pkgs
-    - name: Setup VSCode
-      become: yes
-      become_user: root
-      import_role:
-        name: ansible-role-visual-studio-code
-      vars:
-        users:
-          - username: '{{dotfiles_user}}'
-            visual_studio_code_extensions:
-              - esbenp.prettier-vscode
-              - dbaeumer.vscode-eslint
-            visual_studio_code_settings: {
-              "editor.detectIndentation": false,
-              "editor.insertSpaces": false,
-              "editor.fontSize": 15,
-              "editor.renderWhitespace": "boundary",
-              "editor.tabSize": 2,
-              "editor.smoothScrolling": true,
-              "terminal.integrated.fontSize": 15,
-              "prettier.useTabs": true,
-              "prettier.semi": false,
-              "prettier.singleQuote": true,
-              "prettier.trailingComma": "es5",
-              "prettier.bracketSpacing": false,
-              "prettier.jsxBracketSameLine": true,
-              "explorer.confirmDragAndDrop": false,
-              "explorer.confirmDelete": false,
-              "window.menuBarVisibility": "toggle",
-              "workbench.editor.showTabs": true,
-              "npm.enableScriptExplorer": true
-            }
-      tags: vscode
     - name: Setup .bashrc
       become: yes
       become_user: '{{dotfiles_user}}'

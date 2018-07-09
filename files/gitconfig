@@ -5,4 +5,4 @@
 [alias]
 	hist = show --stat
 	l = log --graph --oneline --branches --decorate --all
-	status = status -s
+	s = status -s
