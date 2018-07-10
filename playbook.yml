@@ -42,7 +42,7 @@
               function sst() {
                 if [ $# -lt 2 ]; then
                   echo "Usage: sst [subdomain] [port]"
-                  exit 1
+                  return 1
                 fi
                 sub=$1
                 port=$2
