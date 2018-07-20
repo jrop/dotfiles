@@ -7,6 +7,8 @@ My dotfiles, delivered via Ansible.
 
 ```sh
 curl -sSL https://raw.githubusercontent.com/jrop/dotfiles/master/install.sh | sh
+# or:
+wget -O - https://raw.githubusercontent.com/jrop/dotfiles/master/install.sh | sh
 
 # Install rc files only:
 ansible-playbook playbook.yml --tags ""

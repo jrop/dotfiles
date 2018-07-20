@@ -1,6 +1,7 @@
 - hosts: localhost
   tasks:
     - import_tasks: who.yml
+
     - name: Install packages
       become: yes
       become_user: root
@@ -21,6 +22,7 @@
         - tig
         - tmux
       tags: pkgs
+
     - name: Setup vi alternatives to use NeoVim
       become: yes
       become_user: root
@@ -28,6 +30,31 @@
         name: vi
         path: /usr/bin/nvim
       tags: pkgs
+
+    - name: Install bash-it
+      import_role:
+        name: ansible-bash_it
+      vars:
+        users: '{{dotfiles_user}}'
+        theme: minimal
+      tags: [bash-it]    
+    
+    - name: Install Node Version Manager (nvm)
+      become: yes
+      become_user: root
+      import_role:
+        name: ansible-nvm
+      vars:
+        nvm_version: HEAD
+        nvm_default_node_version: '10'
+        nvm_node_versions: 
+          - '{{nvm_default_node_version}}'
+        nvm_user: '{{dotfiles_user}}'
+        nvm_npm_pkgs: 
+          - pkg: yarn
+            version: latest
+      tags: [nvm]
+
     - name: Setup .bashrc
       become: yes
       become_user: '{{dotfiles_user}}'
@@ -54,6 +81,7 @@
               export PATH="~/.local/bin:$PATH"
               export LD_LIBRARY_PATH="~/.local/lib:$LD_LIBRARY_PATH"
       tags: always
+
     - name: Setup Vim
       become: yes
       become_user: '{{dotfiles_user}}'
@@ -61,6 +89,7 @@
         src: files/vimrc
         dest: ~/.vimrc
       tags: always
+
     - name: Setup NeoVim
       become: yes
       become_user: '{{dotfiles_user}}'
@@ -72,6 +101,7 @@
             src: files/init.vim
             dest: ~/.config/nvim/init.vim
       tags: always
+
     - name: Setup TMUX
       become: yes
       become_user: '{{dotfiles_user}}'
@@ -79,6 +109,7 @@
         src: files/tmux.conf
         dest: ~/.tmux.conf
       tags: always
+
     - name: Setup Git
       become: yes
       become_user: '{{dotfiles_user}}'
