@@ -65,3 +65,11 @@
     src: files/gitconfig
     dest: ~/.gitconfig
   tags: always
+
+- name: Setup Gtk
+  become: yes
+  become_user: '{{dotfiles_user}}'
+  copy:
+    src: files/gtk.css
+    dest: ~/.config/gtk-3.0/gtk.css
+  tags: always
