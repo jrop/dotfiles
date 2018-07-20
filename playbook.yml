@@ -8,6 +8,7 @@
       apt:
         name: '{{item}}'
       with_items:
+        - autossh
         - ansible
         - build-essential
         - curl
@@ -37,7 +38,7 @@
       vars:
         users: '{{dotfiles_user}}'
         theme: minimal
-      tags: [bash-it]    
+      tags: [bash-it]
     
     - name: Install Node Version Manager (nvm)
       become: yes
@@ -73,13 +74,15 @@
                 fi
                 sub=$1
                 port=$2
-                ssh -R $sub:80:localhost:$port serveo.net
+                autossh -R $sub:80:localhost:$port serveo.net
               }
               alias dclean="docker images -qf dangling=true | xargs -n 1 docker rmi"
               alias mon="tmux set mouse on"
               alias moff="tmux set mouse off"
+              export EDITOR=nvim
               export PATH="~/.local/bin:$PATH"
               export LD_LIBRARY_PATH="~/.local/lib:$LD_LIBRARY_PATH"
+              [ -z "$TMUX" ] && tmux
       tags: always
 
     - name: Setup Vim
