@@ -1,0 +1,18 @@
+- hosts: localhost
+  tasks:
+    - name: Install packages
+      win_chocolatey:
+        name: '{{item}}'
+        state: present
+      with_items:
+        - 7zip
+        - curl
+        - firefox
+        - git
+        - googlechrome
+        - neovim
+        - nodejs
+        - putty
+        - vscode
+
+    - import_tasks: tasks/files.yml

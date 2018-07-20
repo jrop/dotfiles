@@ -1,6 +1,6 @@
 - hosts: localhost
   tasks:
-    - import_tasks: who.yml
+    - import_tasks: tasks/who.yml
 
     - name: Install packages
       become: yes
@@ -56,67 +56,4 @@
             version: latest
       tags: [nvm]
 
-    - name: Setup .bashrc
-      become: yes
-      become_user: '{{dotfiles_user}}'
-      block:
-        - file: path=~/.local/bin state=directory
-        - file: path=~/.local/lib state=directory
-        - name: .bashrc
-          blockinfile:
-            path: ~/.bashrc
-            insertafter: EOF
-            block: |
-              function sst() {
-                if [ $# -lt 2 ]; then
-                  echo "Usage: sst [subdomain] [port]"
-                  return 1
-                fi
-                sub=$1
-                port=$2
-                autossh -R $sub:80:localhost:$port serveo.net
-              }
-              alias dclean="docker images -qf dangling=true | xargs -n 1 docker rmi"
-              alias mon="tmux set mouse on"
-              alias moff="tmux set mouse off"
-              export EDITOR=nvim
-              export PATH="~/.local/bin:$PATH"
-              export LD_LIBRARY_PATH="~/.local/lib:$LD_LIBRARY_PATH"
-              [ -z "$TMUX" ] && tmux
-      tags: always
-
-    - name: Setup Vim
-      become: yes
-      become_user: '{{dotfiles_user}}'
-      copy:
-        src: files/vimrc
-        dest: ~/.vimrc
-      tags: always
-
-    - name: Setup NeoVim
-      become: yes
-      become_user: '{{dotfiles_user}}'
-      block:
-        - file:
-            path: ~/.config/nvim/
-            state: directory
-        - copy:
-            src: files/init.vim
-            dest: ~/.config/nvim/init.vim
-      tags: always
-
-    - name: Setup TMUX
-      become: yes
-      become_user: '{{dotfiles_user}}'
-      copy:
-        src: files/tmux.conf
-        dest: ~/.tmux.conf
-      tags: always
-
-    - name: Setup Git
-      become: yes
-      become_user: '{{dotfiles_user}}'
-      copy:
-        src: files/gitconfig
-        dest: ~/.gitconfig
-      tags: always
+    - import_tasks: tasks/files.yml
