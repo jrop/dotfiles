@@ -1,0 +1,26 @@
+- hosts: localhost
+  tasks:
+    - name: Install packages
+      homebrew:
+        name: '{{item}}'
+        state: present
+      with_items:
+        - ansible
+        - docker
+        - docker-compose
+        - neovim
+        - maven
+        - tig
+        - tmux
+    - name: Install casks
+      homebrew_cask:
+        name: '{{item}}'
+        state: present
+      with_items:
+        - docker
+        - iterm2
+        - slack
+        - spectacle
+        - tunnelblick
+        - visual-studio-code
+
