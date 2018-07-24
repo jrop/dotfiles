@@ -1,5 +1,6 @@
 - hosts: localhost
   tasks:
+    # choco install -y 7zip curl firefox git googlechrome neovim nodejs putty vscode
     - name: Install packages
       win_chocolatey:
         name: '{{item}}'
