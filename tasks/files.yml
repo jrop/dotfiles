@@ -25,7 +25,7 @@
           alias mon="tmux set mouse on"
           alias moff="tmux set mouse off"
           export EDITOR=nvim
-          export PATH="~/.local/bin:$PATH"
+          export PATH="$HOME/go/bin:$HOME/.local/bin:$PATH"
           export LD_LIBRARY_PATH="~/.local/lib:$LD_LIBRARY_PATH"
           [ -z "$TMUX" ] && tmux
   tags: always

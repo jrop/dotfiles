@@ -9,8 +9,10 @@
         - autossh
         - docker
         - docker-compose
-        - neovim
         - maven
+        - mkcert
+        - neovim
+        - nss
         - tig
         - tmux
     - name: Install casks
@@ -19,6 +21,8 @@
         state: present
       with_items:
         - docker
+        - firefox
+        - google-chrome
         - iterm2
         - slack
         - spectacle
