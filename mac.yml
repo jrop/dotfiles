@@ -22,10 +22,13 @@
       with_items:
         - docker
         - firefox
+        - flycut
         - google-chrome
+        - insomnia
         - iterm2
         - slack
         - spectacle
+        - spotify
         - tunnelblick
         - visual-studio-code
 
