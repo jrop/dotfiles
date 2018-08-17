@@ -9,6 +9,8 @@
         - autossh
         - docker
         - docker-compose
+        - gitlab-runner
+        - jq
         - maven
         - mkcert
         - neovim
