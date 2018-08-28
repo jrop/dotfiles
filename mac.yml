@@ -17,6 +17,7 @@
         - mkcert
         - neovim
         - nss
+        - pipenv
         - tig
         - tmux
     - name: Install casks
