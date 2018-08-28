@@ -6,6 +6,7 @@
         state: present
       with_items:
         - ansible
+        - awscli
         - autossh
         - docker
         - docker-compose
