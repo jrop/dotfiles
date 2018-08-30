@@ -12,4 +12,5 @@ wget https://github.com/jrop/dotfiles/archive/master.zip
 unzip master.zip
 cd dotfiles-master
 ansible-galaxy install -r requirements.yml -p roles
+sudo whoami > /dev/null
 ansible-playbook playbook.yml
