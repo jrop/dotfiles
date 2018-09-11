@@ -18,6 +18,7 @@
         - neovim
         - nss
         - pipenv
+        - ripgrep
         - tig
         - tmux
     - name: Install casks

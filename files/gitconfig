@@ -6,3 +6,4 @@
 	hist = show --stat
 	l = log --graph --oneline --branches --decorate --all
 	s = status -s
+	root = rev-parse --show-toplevel
