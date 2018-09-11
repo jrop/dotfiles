@@ -1,0 +1,21 @@
+- name: Install packages
+  become: yes
+  become_user: root
+  apt:
+    name: '{{item}}'
+  with_items:
+    - autossh
+    - ansible
+    - build-essential
+    - curl
+    - git
+    - git-extras
+    - git-gui
+    - gitk
+    - jq
+    - neofetch
+    - neovim
+    - net-tools
+    - tig
+    - tmux
+  tags: pkgs

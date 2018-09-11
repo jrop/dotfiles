@@ -1,59 +1,18 @@
 - hosts: localhost
   tasks:
     - import_tasks: tasks/who.yml
-
-    - name: Install packages
-      become: yes
-      become_user: root
-      apt:
-        name: '{{item}}'
-      with_items:
-        - autossh
-        - ansible
-        - build-essential
-        - curl
-        - git
-        - git-extras
-        - git-gui
-        - gitk
-        - jq
-        - neofetch
-        - neovim
-        - net-tools
-        - tig
-        - tmux
-      tags: pkgs
-
-    - name: Setup vi alternatives to use NeoVim
-      become: yes
-      become_user: root
-      alternatives:
-        name: vi
-        path: /usr/bin/nvim
-      tags: pkgs
-
-    - name: Install bash-it
-      import_role:
-        name: ansible-bash_it
-      vars:
-        users: '{{dotfiles_user}}'
-        theme: minimal
-      tags: [bash-it]
-    
-    - name: Install Node Version Manager (nvm)
-      become: yes
-      become_user: root
-      import_role:
-        name: ansible-nvm
-      vars:
-        nvm_version: HEAD
-        nvm_default_node_version: '10'
-        nvm_node_versions: 
-          - '{{nvm_default_node_version}}'
-        nvm_user: '{{dotfiles_user}}'
-        nvm_npm_pkgs: 
-          - pkg: yarn
-            version: latest
-      tags: [nvm]
-
     - import_tasks: tasks/files.yml
+ 
+    - import_tasks: tasks/linux.yml
+      when: ansible_os_family == "Debian"
+
+    - import_tasks: tasks/mac.yml
+      when: ansible_os_family == "Darwin"
+
+    - import_tasks: tasks/unix.yml
+      when:
+        - ansible_os_family == "Darwin"
+        - ansible_os_family == "Debian"
+
+    - import_tasks: tasks/windows.yml
+      when: ansible_os_family == "Windows"
