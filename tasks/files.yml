@@ -3,6 +3,8 @@
   become: yes
   become_user: '{{dotfiles_user}}'
   block:
+    - name: ~/.config/gtk-3.0
+      file: path=~/.config/gtk-3.0 state=directory
     - name: ~/.local/bin
       file: path=~/.local/bin state=directory
     - name: ~/.local/lib
