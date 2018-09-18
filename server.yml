@@ -1,13 +1,16 @@
 - hosts: localhost
   tasks:
     - name: Create nodejs user
+      become: yes
+      become_user: root
       user:
         name: nodejs
+        shell: /bin/bash
     - name: Install NodeJS
       become: yes
       become_user: root
       import_role:
-        name: geerlingguy.nodejs
+        name: ansible-role-nodejs
       vars:
         nodejs_version: 8.x
         nodejs_npm_global_packages:
@@ -18,10 +21,14 @@
           - name: pm2
             version: "3.1.2"
     - name: Copy pm2.service file
+      become: yes
+      become_user: root
       copy:
         src: files/pm2.service
         dest: /etc/systemd/system/pm2.service
     - name: Enable pm2
+      become: yes
+      become_user: root
       service:
         name: pm2
         state: started
