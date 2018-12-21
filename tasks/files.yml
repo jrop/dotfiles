@@ -26,8 +26,11 @@
           alias dclean="docker images -qf dangling=true | xargs -n 1 docker rmi"
           alias mon="tmux set mouse on"
           alias moff="tmux set mouse off"
+          alias d="docker"
+          alias dc="docker-compose"
+          alias kc="kubectl"
           export EDITOR=nvim
-          export PATH="$HOME/go/bin:$HOME/.local/bin:$PATH"
+          export PATH="$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
           export LD_LIBRARY_PATH="~/.local/lib:$LD_LIBRARY_PATH"
   tags: always
 

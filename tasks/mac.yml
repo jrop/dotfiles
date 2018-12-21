@@ -10,6 +10,7 @@
     - docker-compose
     - fzf
     - gitlab-runner
+    - iproute2mac
     - jq
     - maven
     - mkcert
