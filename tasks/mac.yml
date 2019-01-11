@@ -1,4 +1,4 @@
-- name: Install packages
+- name: Install packages (MacOS)
   homebrew:
     name: '{{item}}'
     state: present
@@ -20,7 +20,7 @@
     - ripgrep
     - tig
     - tmux
-- name: Install casks
+- name: Install casks (MacOS)
   homebrew_cask:
     name: '{{item}}'
     state: present
@@ -37,3 +37,7 @@
     - spotify
     - tunnelblick
     - visual-studio-code
+
+  # Aliases:
+  # TODO: alias ports="netstat -vanp tcp"
+  # TODO: alias port="lsof -i tcp:3000"

@@ -1,4 +1,4 @@
-- name: Install packages
+- name: Install packages (Windows)
   win_chocolatey:
     name: '{{item}}'
     state: present

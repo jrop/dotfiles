@@ -5,6 +5,7 @@
     name: vi
     path: /usr/bin/nvim
   tags: pkgs
+  when: ansible_os_family != "Darwin"
 
 - name: Install bash-it
   import_role:
