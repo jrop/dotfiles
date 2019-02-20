@@ -27,10 +27,14 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'mhartington/oceanic-next'
 	Plug 'leafgarland/typescript-vim'
+	Plug 'Quramy/tsuquyomi'
 	Plug 'prettier/vim-prettier', {
 		\ 'do': 'yarn install',
 		\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 	Plug 'diepm/vim-rest-console'
+	Plug 'tpope/vim-fugitive'
+	Plug 'scrooloose/nerdtree'
+	Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 if (has("termguicolors"))
