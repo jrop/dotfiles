@@ -13,6 +13,22 @@
   vars:
     users: '{{dotfiles_user}}'
     theme: minimal
+    aliases: [general]
+    plugins: [alias-completion, base]
+    completions:
+      - awscli
+      - bash-it
+      - brew
+      - docker-compose
+      - docker-machine
+      - docker
+      - git
+      - kubectl
+      - npm
+      - nvm
+      - ssh
+      - system
+      - tmux
   tags: [bash-it]
 
 - name: Install Node Version Manager (nvm)

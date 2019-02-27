@@ -32,6 +32,8 @@
           export EDITOR=nvim
           export PATH="$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
           export LD_LIBRARY_PATH="~/.local/lib:$LD_LIBRARY_PATH"
+
+          [ -z $TMUX ] && tmux
   tags: always
 
 - name: Setup Vim
