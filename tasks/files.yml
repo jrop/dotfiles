@@ -15,8 +15,6 @@
         insertbefore: BOF
         block: |
           [ -z $TMUX ] && tmux
-          set -o vi
-          bind -m vi-insert "jj":vi-movement-mode
           bind -m vi-insert "\C-l":clear-screen
 
           function sst() {
@@ -28,6 +26,7 @@
             port=$2
             autossh -R $sub:80:localhost:$port serveo.net
           }
+
           alias dclean="docker images -qf dangling=true | xargs -n 1 docker rmi"
           alias mon="tmux set mouse on"
           alias moff="tmux set mouse off"
@@ -37,6 +36,14 @@
           export EDITOR=nvim
           export PATH="$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
           export LD_LIBRARY_PATH="~/.local/lib:$LD_LIBRARY_PATH"
+  tags: always
+
+- name: Setup .inputrc
+  become: yes
+  become_user: '{{dotfiles_user}}'
+  copy:
+    src: files/inputrc
+    dest: ~/.inputrc
   tags: always
 
 - name: Setup Vim
