@@ -12,8 +12,10 @@
     - name: .bashrc
       blockinfile:
         path: ~/.bashrc
-        insertafter: EOF
+        insertbefore: BOF
         block: |
+          [ -z $TMUX ] && tmux
+
           function sst() {
             if [ $# -lt 2 ]; then
               echo "Usage: sst [subdomain] [port]"
@@ -32,8 +34,6 @@
           export EDITOR=nvim
           export PATH="$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
           export LD_LIBRARY_PATH="~/.local/lib:$LD_LIBRARY_PATH"
-
-          [ -z $TMUX ] && tmux
   tags: always
 
 - name: Setup Vim
