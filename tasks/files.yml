@@ -15,7 +15,6 @@
         insertbefore: BOF
         block: |
           [ -z $TMUX ] && tmux
-          bind -m vi-insert "\C-l":clear-screen
 
           function sst() {
             if [ $# -lt 2 ]; then
