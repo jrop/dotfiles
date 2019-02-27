@@ -15,6 +15,9 @@
         insertbefore: BOF
         block: |
           [ -z $TMUX ] && tmux
+          set -o vi
+          bind -m vi-insert "jj":vi-movement-mode
+          bind -m vi-insert "\C-l":clear-screen
 
           function sst() {
             if [ $# -lt 2 ]; then
