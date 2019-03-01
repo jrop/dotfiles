@@ -25,9 +25,9 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin('~/.local/share/nvim/plugged')
-	Plug 'mhartington/oceanic-next'
+	Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 	Plug 'leafgarland/typescript-vim'
-	Plug 'Quramy/tsuquyomi'
+	Plug 'mhartington/oceanic-next'
 	Plug 'prettier/vim-prettier', {
 		\ 'do': 'yarn install',
 		\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
@@ -42,3 +42,4 @@ if (has("termguicolors"))
 endif
 syntax enable
 colorscheme OceanicNext
+
