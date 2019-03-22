@@ -35,6 +35,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'tpope/vim-fugitive'
 	Plug 'scrooloose/nerdtree'
 	Plug 'junegunn/fzf'
+	Plug 'christianrondeau/vim-base64'
 call plug#end()
 
 if (has("termguicolors"))

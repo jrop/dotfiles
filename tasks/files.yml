@@ -33,8 +33,11 @@
           alias dc="docker-compose"
           alias kc="kubectl"
           export EDITOR=nvim
-          export PATH="$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
+          export HISTCONTROL=ignoreboth
+          export KUBE_EDITOR="code -w"
+          export PATH="$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
           export LD_LIBRARY_PATH="~/.local/lib:$LD_LIBRARY_PATH"
+  when: ansible_os_family == "Darwin" or ansible_os_family == "Debian" or ansible_os_family == "RedHat"
   tags: always
 
 - name: Setup .inputrc
