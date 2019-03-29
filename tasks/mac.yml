@@ -4,39 +4,76 @@
     state: present
   with_items:
     - ansible
-    - awscli
     - autossh
+    - bash
     - docker
     - docker-compose
     - fzf
+    - gcc
     - gitlab-runner
+    - imagemagick
     - iproute2mac
     - jq
+    - kafkacat
+    - kakoune
+    - kubernetes-cli
     - maven
     - mkcert
     - neovim
-    - nss
-    - pipenv
+    - nmap
+    - ocaml
+    - opam
+    - python
+    - python@2
     - ripgrep
+    - supervisor
+    - telnet
     - tig
     - tmux
+    - truncate
+    - watch
+    - wget
+
 - name: Install casks (MacOS)
   homebrew_cask:
     name: '{{item}}'
     state: present
   with_items:
+    - alacritty
+    - atom
+    - disk-inventory-x
     - docker
     - firefox
     - flycut
+    - gimp
     - google-chrome
-    - insomnia
+    - inkscape
     - iterm2
+    - launchcontrol
+    - minikube
+    - ngrok
+    - obs
+    - openshot-video-editor
     - postman
     - slack
     - spectacle
     - spotify
+    - todotxt
     - tunnelblick
+    - virtualbox
     - visual-studio-code
+    - vlc
+    - xquartz
+
+- name: TMUX macOS integration
+  blockinfile:
+    path: ~/.tmux.conf
+    insertbefore: EOF
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - macOS integration"
+    block: |
+      bind-key -T copy-mode-vi 'y' send-keys -X copy-pipe "pbcopy"
+      bind-key -T copy-mode-vi Enter send-keys -X copy-pipe "pbcopy"
+  tags: always
 
   # Aliases:
   # TODO: alias ports="netstat -vanp tcp"

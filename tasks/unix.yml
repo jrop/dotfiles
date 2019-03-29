@@ -46,3 +46,16 @@
       - pkg: yarn
         version: latest
   tags: [nvm]
+
+- name: rustup.sh
+  shell: curl https://sh.rustup.rs -sSf | sh -s -- -y
+  args:
+    warn: false
+
+- name: add components
+  shell: ~/.cargo/bin/rustup component add {{ item }}
+  with_items: [clippy]
+
+- name: cargo install packages
+  shell: "[ ! -e ~/.cargo/bin/{{ item }} ] && ~/.cargo/bin/rustup run stable cargo install {{ item }} || exit 0"
+  with_items: [rustfmt]
