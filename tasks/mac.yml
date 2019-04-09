@@ -1,6 +1,6 @@
 - name: Install packages (MacOS)
   homebrew:
-    name: '{{item}}'
+    name: "{{item}}"
     state: present
   with_items:
     - ansible
@@ -36,7 +36,7 @@
 
 - name: Install casks (MacOS)
   homebrew_cask:
-    name: '{{item}}'
+    name: "{{item}}"
     state: present
   with_items:
     - alacritty
@@ -66,15 +66,10 @@
     - xquartz
 
 - name: TMUX macOS integration
-  blockinfile:
-    path: ~/.tmux.conf
-    insertbefore: EOF
-    marker: "# {mark} ANSIBLE MANAGED BLOCK - macOS integration"
-    block: |
-      bind-key -T copy-mode-vi 'y' send-keys -X copy-pipe "pbcopy"
-      bind-key -T copy-mode-vi Enter send-keys -X copy-pipe "pbcopy"
+  copy:
+    src: files/tmux.mac.conf
+    dest: ~/.tmux.conf
   tags: always
-
   # Aliases:
   # TODO: alias ports="netstat -vanp tcp"
   # TODO: alias port="lsof -i tcp:3000"
