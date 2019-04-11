@@ -58,4 +58,4 @@
 
 - name: cargo install packages
   shell: "[ ! -e ~/.cargo/bin/{{ item }} ] && ~/.cargo/bin/rustup run stable cargo install {{ item }} || exit 0"
-  with_items: [rustfmt]
+  with_items: [procs, rustfmt]
