@@ -12,7 +12,7 @@
     name: ansible-bash_it
   vars:
     users: '{{dotfiles_user}}'
-    theme: minimal
+    theme: '{{bash_it_theme}}'
     aliases: [general]
     plugins: [alias-completion, base]
     completions:

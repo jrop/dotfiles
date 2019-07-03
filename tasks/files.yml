@@ -32,6 +32,7 @@
           alias d="docker"
           alias dc="docker-compose"
           alias kc="kubectl"
+          alias kp="kube-prompt"
           export EDITOR=nvim
           export HISTCONTROL=ignoreboth
           export KUBE_EDITOR="code -w"
@@ -92,4 +93,12 @@
     src: files/gtk.css
     dest: ~/.config/gtk-3.0/gtk.css
   when: ansible_os_family == "Debian"
+  tags: always
+
+- name: Setup .editorconfig
+  become: yes
+  become_user: '{{dotfiles_user}}'
+  copy:
+    src: files/editorconfig
+    dest: ~/.editorconfig
   tags: always
