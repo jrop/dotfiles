@@ -102,3 +102,11 @@
     src: files/editorconfig
     dest: ~/.editorconfig
   tags: always
+
+- name: Setup ~/.config/fish/config.fish
+  become: yes
+  become_user: '{{dotfiles_user}}'
+  copy:
+    src: files/config.fish
+    dest: ~/.config/fish/config.fish
+  tags: always
