@@ -45,6 +45,7 @@
     - disk-inventory-x
     - docker
     - firefox
+    - fish
     - flycut
     - gimp
     - google-chrome
@@ -72,6 +73,43 @@
     src: files/tmux.mac.conf
     dest: ~/.tmux.conf
   tags: always
-  # Aliases:
-  # TODO: alias ports="netstat -vanp tcp"
-  # TODO: alias port="lsof -i tcp:3000"
+
+- name: Add "/usr/local/bin/fish" to /etc/shells
+  become: yes
+  become_user: root
+  lineinfile:
+    path: /etc/shells
+    state: present
+    line: /usr/local/bin/fish
+  tags: always
+
+- name: Change shell to fish
+  become: yes
+  become_user: root
+  user:
+    name: jonathan
+    shell: /usr/local/bin/fish
+  tags: always
+
+- name: Is Fisher installed?
+  stat:
+    path: ~/.config/fish/functions/fisher.fish
+  register: fisher_stat
+  tags: always
+
+- name: Install Fisher
+  shell: curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+  when: fisher_stat.stat.exists == False
+  tags: always
+
+- name: Install Fisher packages
+  command: fish -c "fisher add {{item}}"
+  with_items:
+    - jethrokuan/fzf
+    - jorgebucaran/fish-nvm
+    - matchai/spacefish
+  tags: always
+
+# Aliases:
+# TODO: alias ports="netstat -vanp tcp"
+# TODO: alias port="lsof -i tcp:3000"

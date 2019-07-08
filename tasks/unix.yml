@@ -11,8 +11,8 @@
   import_role:
     name: ansible-bash_it
   vars:
-    users: '{{dotfiles_user}}'
-    theme: '{{bash_it_theme}}'
+    users: "{{dotfiles_user}}"
+    theme: "{{bash_it_theme}}"
     aliases: [general]
     plugins: [alias-completion, base]
     completions:
@@ -38,11 +38,11 @@
     name: ansible-nvm
   vars:
     nvm_version: HEAD
-    nvm_default_node_version: '10'
-    nvm_node_versions: 
-      - '{{nvm_default_node_version}}'
-    nvm_user: '{{dotfiles_user}}'
-    nvm_npm_pkgs: 
+    nvm_default_node_version: "10"
+    nvm_node_versions:
+      - "{{nvm_default_node_version}}"
+    nvm_user: "{{dotfiles_user}}"
+    nvm_npm_pkgs:
       - pkg: yarn
         version: latest
   tags: [nvm]
