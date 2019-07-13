@@ -103,10 +103,34 @@
     dest: ~/.editorconfig
   tags: always
 
+- name: Create ~/.config/fish/functions/
+  become: yes
+  become_user: '{{dotfiles_user}}'
+  file:
+    path: ~/.config/fish/functions/
+    state: directory
+  tags: always
+
 - name: Setup ~/.config/fish/config.fish
   become: yes
   become_user: '{{dotfiles_user}}'
   copy:
-    src: files/config.fish
+    src: files/fish/config.fish
     dest: ~/.config/fish/config.fish
+  tags: always
+
+- name: Setup ~/.config/fish/fishfile
+  become: yes
+  become_user: '{{dotfiles_user}}'
+  copy:
+    src: files/fish/fishfile
+    dest: ~/.config/fish/fishfile
+  tags: always
+
+- name: Setup ~/.config/fish/functions/kubectl-switch.fish
+  become: yes
+  become_user: '{{dotfiles_user}}'
+  copy:
+    src: files/fish/functions/kubectl-switch.fish
+    dest: ~/.config/fish/functions/kubectl-switch.fish
   tags: always

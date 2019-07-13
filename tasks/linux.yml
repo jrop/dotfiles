@@ -8,6 +8,7 @@
     - ansible
     - build-essential
     - curl
+    - fish
     - git
     - git-extras
     - git-gui
@@ -19,3 +20,11 @@
     - tig
     - tmux
   tags: pkgs
+
+- name: Change shell to fish
+  become: yes
+  become_user: root
+  user:
+    name: jonathan
+    shell: /usr/bin/fish
+  tags: always
