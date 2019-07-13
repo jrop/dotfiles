@@ -21,6 +21,6 @@ abbr -a moff "tmux set mouse off"
 
 set -Ux EDITOR nvim
 set -Ux KUBE_EDITOR "code -w"
-set -Ux PATH "$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
-set -Ux LD_LIBRARY_PATH "~/.local/lib:$LD_LIBRARY_PATH"
+set -Ux PATH $HOME/go/bin $HOME/.local/bin $HOME/.cargo/bin $PATH
+set -Ux LD_LIBRARY_PATH "$HOME/.local/lib:$LD_LIBRARY_PATH"
 set -Ux SPACEFISH_PROMPT_ADD_NEWLINE false
