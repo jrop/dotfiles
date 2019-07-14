@@ -135,5 +135,6 @@
     dest: ~/.config/fish/functions/{{item}}
   with_items:
     - fish_greeting.fish
+    - gh-sync.fish
     - kubectl-switch.fish
   tags: always
