@@ -75,7 +75,6 @@
   copy:
     src: files/tmux.conf
     dest: ~/.tmux.conf
-  when: ansible_os_family != "Darwin"
   tags: always
 
 - name: Setup Git

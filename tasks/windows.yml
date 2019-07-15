@@ -1,7 +1,7 @@
 - name: Install packages (Windows)
   win_chocolatey:
     name: '{{item}}'
-    state: present
+    state: enabled
   with_items:
     - 7zip
     - curl

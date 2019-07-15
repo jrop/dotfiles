@@ -1,16 +1,26 @@
 - hosts: localhost
   tasks:
-    - import_tasks: tasks/who.yml
+    - name: Get host user
+      block:
+        - name: whoami
+          local_action: command whoami
+          changed_when: false
+          register: dotfiles_user_cmd
+          check_mode: no
+        - name: Set dotfiles_user
+          set_fact: dotfiles_user={{dotfiles_user_cmd.stdout}}
+      tags: always
+
     - import_tasks: tasks/files.yml
+
+    - import_tasks: tasks/unix.yml
+      when: ansible_os_family == "Darwin" or ansible_os_family == "Debian" or ansible_os_family == "RedHat"
 
     - import_tasks: tasks/linux.yml
       when: ansible_os_family == "Debian"
 
     - import_tasks: tasks/mac.yml
       when: ansible_os_family == "Darwin"
-
-    - import_tasks: tasks/unix.yml
-      when: ansible_os_family == "Darwin" or ansible_os_family == "Debian" or ansible_os_family == "RedHat"
 
     - import_tasks: tasks/windows.yml
       when: ansible_os_family == "Windows"
