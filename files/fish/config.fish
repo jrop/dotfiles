@@ -19,8 +19,8 @@ abbr -a kp "kube-prompt"
 abbr -a mon "tmux set mouse on"
 abbr -a moff "tmux set mouse off"
 
-set -Ux EDITOR nvim
-set -Ux KUBE_EDITOR "code -w"
-set -Ux PATH "$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
-set -Ux LD_LIBRARY_PATH "~/.local/lib:$LD_LIBRARY_PATH"
-set -Ux SPACEFISH_PROMPT_ADD_NEWLINE false
+set -gx EDITOR nvim
+set -gx KUBE_EDITOR "code -w"
+set -gx PATH /snap/bin $HOME/go/bin $HOME/.local/bin $HOME/.cargo/bin $PATH
+set -gx LD_LIBRARY_PATH "$HOME/.local/lib:$LD_LIBRARY_PATH"
+set -gx SPACEFISH_PROMPT_ADD_NEWLINE false

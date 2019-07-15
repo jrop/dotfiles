@@ -126,10 +126,14 @@
     dest: ~/.config/fish/fishfile
   tags: always
 
-- name: Setup ~/.config/fish/functions/kubectl-switch.fish
+- name: Setup ~/.config/fish/functions/...
   become: yes
   become_user: '{{dotfiles_user}}'
   copy:
-    src: files/fish/functions/kubectl-switch.fish
-    dest: ~/.config/fish/functions/kubectl-switch.fish
+    src: files/fish/functions/{{item}}
+    dest: ~/.config/fish/functions/{{item}}
+  with_items:
+    - fish_greeting.fish
+    - gh-sync.fish
+    - kubectl-switch.fish
   tags: always
