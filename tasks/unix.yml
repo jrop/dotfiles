@@ -31,22 +31,6 @@
       - tmux
   tags: [bash-it]
 
-- name: Install Node Version Manager (nvm)
-  become: yes
-  become_user: root
-  import_role:
-    name: ansible-nvm
-  vars:
-    nvm_version: HEAD
-    nvm_default_node_version: "10"
-    nvm_node_versions:
-      - "{{nvm_default_node_version}}"
-    nvm_user: "{{dotfiles_user}}"
-    nvm_npm_pkgs:
-      - pkg: yarn
-        version: latest
-  tags: [nvm]
-
 - name: rustup.sh
   shell: curl https://sh.rustup.rs -sSf | sh -s -- -y
   args:
