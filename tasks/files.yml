@@ -9,22 +9,17 @@
       file: path=~/.local/bin state=directory
     - name: ~/.local/lib
       file: path=~/.local/lib state=directory
+    - name: ~/.bashrc is present
+      file: path=~/.bashrc state=touch
     - name: .bashrc
       blockinfile:
         path: ~/.bashrc
         insertbefore: BOF
         block: |
-          [ -z $TMUX ] && tmux
-
-          function sst() {
-            if [ $# -lt 2 ]; then
-              echo "Usage: sst [subdomain] [port]"
-              return 1
-            fi
-            sub=$1
-            port=$2
-            autossh -R $sub:80:localhost:$port serveo.net
-          }
+          # Do not start tmux if:
+          # 1) We are in an SSH connection (ansible provisioning Vagrant will never terminate because tmux will sit there and not give the connection back)
+          # 2) tmux is already running
+          [ \( -z "$SSH_CONNECTION" \) -a \( -z "$TMUX" \) ] && tmux
 
           alias dclean="docker images -qf dangling=true | xargs -n 1 docker rmi"
           alias mon="tmux set mouse on"
