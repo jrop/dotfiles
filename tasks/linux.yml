@@ -2,29 +2,32 @@
   become: yes
   become_user: root
   apt:
-    name: '{{item}}'
-  with_items:
-    - autossh
-    - ansible
-    - build-essential
-    - curl
-    - fish
-    - git
-    - git-extras
-    - git-gui
-    - gitk
-    - jq
-    - neofetch
-    - neovim
-    - net-tools
-    - tig
-    - tmux
+    name:
+      - autossh
+      - ansible
+      - build-essential
+      - curl
+      - fish
+      - git
+      - git-extras
+      - git-gui
+      - gitk
+      - gradle
+      - jq
+      - neofetch
+      - neovim
+      - net-tools
+      - openjdk-8-jre
+      - openjdk-8-jdk
+      - tig
+      - tmux
+      - vagrant
   tags: pkgs
 
 - name: Change shell to fish
   become: yes
   become_user: root
   user:
-    name: jonathan
+    name: "{{dotfiles_user}}"
     shell: /usr/bin/fish
   tags: always
