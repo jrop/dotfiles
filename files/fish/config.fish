@@ -10,6 +10,7 @@ and not set -q TMUX
 end
 
 abbr -a code "env TMUX=\"\" code"
+abbr -a codei "env TMUX=\"\" code-insiders"
 abbr -a d "docker"
 abbr -a dc "docker-compose"
 abbr -a dclean "docker images -qf dangling=true | xargs -n 1 docker rmi"
