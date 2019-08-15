@@ -50,7 +50,7 @@
   copy:
     src: files/vimrc
     dest: ~/.vimrc
-  tags: always
+  tags: [always, vi, vim, nvim]
 
 - name: Setup NeoVim
   become: yes
@@ -62,7 +62,10 @@
     - copy:
         src: files/init.vim
         dest: ~/.config/nvim/init.vim
-  tags: always
+    - copy:
+        src: files/coc.vim
+        dest: ~/.config/nvim/coc.vim
+  tags: [always, vi, vim, nvim]
 
 - name: Setup TMUX
   become: yes

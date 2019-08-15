@@ -20,6 +20,8 @@ nmap <C-j> :wincmd j<CR>
 nmap <C-k> :wincmd k<CR>
 nmap <C-l> :wincmd l<CR>
 nmap <C-t> :FZF<CR>
+nmap <C-n> :NERDTreeToggle<CR>
+map <Leader>s :source ~/.config/nvim/init.vim<CR>
 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -34,6 +36,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 		\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 	Plug 'diepm/vim-rest-console'
 	Plug 'tpope/vim-fugitive'
+	Plug 'airblade/vim-gitgutter'
 	Plug 'scrooloose/nerdtree'
 	Plug 'junegunn/fzf'
 	Plug 'christianrondeau/vim-base64'
@@ -45,4 +48,6 @@ if (has("termguicolors"))
 endif
 syntax enable
 colorscheme OceanicNext
+
+runtime coc.vim
 

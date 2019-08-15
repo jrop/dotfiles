@@ -10,6 +10,8 @@ set tabstop=2
 set shiftwidth=2
 imap jj <Esc>
 nmap <C-t> :FZF<CR>
+nmap <C-n> :NERDTreeToggle<CR>
+map <Leader>s :source ~/.vimrc<CR>
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -25,6 +27,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 		\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 	Plug 'diepm/vim-rest-console'
 	Plug 'tpope/vim-fugitive'
+	Plug 'airblade/vim-gitgutter'
 	Plug 'scrooloose/nerdtree'
 	Plug 'ctrlpvim/ctrlp.vim'
 	Plug 'christianrondeau/vim-base64'
