@@ -19,6 +19,7 @@ abbr -a kcs "kubectl-switch -n"
 abbr -a kp "kube-prompt"
 abbr -a mon "tmux set mouse on"
 abbr -a moff "tmux set mouse off"
+abbr -a vi "nvim"
 
 set -gx EDITOR nvim
 set -gx KUBE_EDITOR "code -w"

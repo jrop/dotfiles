@@ -9,6 +9,7 @@ set list
 set tabstop=2
 set shiftwidth=2
 imap jj <Esc>
+nmap <C-t> :FZF<CR>
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs

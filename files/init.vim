@@ -19,6 +19,7 @@ nmap <C-h> :wincmd h<CR>
 nmap <C-j> :wincmd j<CR>
 nmap <C-k> :wincmd k<CR>
 nmap <C-l> :wincmd l<CR>
+nmap <C-t> :FZF<CR>
 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
