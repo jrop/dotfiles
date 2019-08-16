@@ -1,12 +1,68 @@
+set number
+set mouse=a
+
+hi NonText ctermfg=DarkGray guifg=gray
+hi SpecialKey ctermfg=DarkGray
+set listchars=eol:$,trail:·,tab:»\ ,extends:>,precedes:<,nbsp:.
+set list
+
+set tabstop=2
+set shiftwidth=2
+imap jj <Esc>
+imap <C-[> <Esc>
+
+nmap <C-h> :wincmd h<CR>
+nmap <C-j> :wincmd j<CR>
+nmap <C-k> :wincmd k<CR>
+nmap <C-l> :wincmd l<CR>
+
+nmap <C-t> :FZF<CR>
+nmap <C-n> :NERDTreeToggle<CR>
+map <Leader>es :e $MYVIMRC<CR>
+map <Leader>s :source $MYVIMRC<CR>
+
+let g:coc_global_extensions = ['coc-json', 'coc-marketplace', 'coc-rls', 'coc-tsserver', 'coc-yaml']
+
+call plug#begin('~/.local/share/nvim/plugged')
+	Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+	Plug 'leafgarland/typescript-vim'
+	Plug 'mhartington/oceanic-next'
+	Plug 'prettier/vim-prettier', {
+		\ 'do': 'yarn install',
+		\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+	Plug 'diepm/vim-rest-console'
+	Plug 'tpope/vim-fugitive'
+	Plug 'airblade/vim-gitgutter'
+	Plug 'scrooloose/nerdtree'
+	Plug 'scrooloose/nerdcommenter'
+	Plug 'junegunn/fzf'
+	Plug 'christianrondeau/vim-base64'
+	Plug 'dag/vim-fish'
+	Plug 'tpope/vim-surround'
+call plug#end()
+
+if (has("termguicolors"))
+ set termguicolors
+endif
+syntax enable
+colorscheme OceanicNext
+
+augroup filetypedetect
+  au BufRead,BufNewFile *.jsx set filetype=javascript.jsx
+  au BufRead,BufNewFile *.tsx set filetype=typescript.tsx
+augroup END
+
+
+"
+" BEGIN Coc
+"
+
 " if hidden is not set, TextEdit might fail.
 set hidden
 
 " Some servers have issues with backup files, see #649
 set nobackup
 set nowritebackup
-
-" Better display for messages
-set cmdheight=1
 
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -100,7 +156,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Using CocList
 " Show all diagnostics

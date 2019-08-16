@@ -44,6 +44,14 @@
     dest: ~/.inputrc
   tags: always
 
+- name: Setup Vim Common
+  become: yes
+  become_user: '{{dotfiles_user}}'
+  copy:
+    src: files/vimrc-common
+    dest: ~/.vimrc-common
+  tags: [always, vi, vim, nvim]
+
 - name: Setup Vim
   become: yes
   become_user: '{{dotfiles_user}}'
@@ -62,9 +70,6 @@
     - copy:
         src: files/init.vim
         dest: ~/.config/nvim/init.vim
-    - copy:
-        src: files/coc.vim
-        dest: ~/.config/nvim/coc.vim
   tags: [always, vi, vim, nvim]
 
 - name: Setup TMUX
