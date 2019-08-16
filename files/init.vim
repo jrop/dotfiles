@@ -27,6 +27,9 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
+let g:coc_global_extensions = ['coc-json', 'coc-rls', 'coc-tsserver']
+
 call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 	Plug 'leafgarland/typescript-vim'
