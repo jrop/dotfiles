@@ -28,7 +28,7 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-let g:coc_global_extensions = ['coc-json', 'coc-rls', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-json', 'coc-marketplace', 'coc-rls', 'coc-tsserver', 'coc-yaml']
 
 call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
@@ -41,6 +41,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'tpope/vim-fugitive'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'scrooloose/nerdtree'
+	Plug 'scrooloose/nerdcommenter'
 	Plug 'junegunn/fzf'
 	Plug 'christianrondeau/vim-base64'
 	Plug 'dag/vim-fish'
