@@ -7,6 +7,8 @@
 - clean: ['~']
 
 - link:
+    ~/.bashrc:
+
     # Fish:
     ~/.config/fish/config.fish: 'config/fish/config.fish'
     ~/.config/fish/fishfile: 'config/fish/fishfile'
