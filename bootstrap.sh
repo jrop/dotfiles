@@ -18,3 +18,8 @@ if [ -n "$(which apt-get)" ]; then
   which curl || sudo apt-get install -y curl
   which python || sudo apt-get install -y python
 fi
+
+git clone https://github.com/jrop/dotfiles
+cd dotfiles
+git submodule update --init --recursive
+./install
