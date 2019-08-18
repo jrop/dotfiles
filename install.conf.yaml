@@ -14,7 +14,7 @@
     ~/.config/fish/functions/gh-sync.fish: 'config/fish/functions/gh-sync.fish'
     ~/.config/fish/functions/kubectl-switch.fish: 'config/fish/functions/kubectl-switch.fish'
 
-    ~/.config/gtk-3.0/gtc.css: 'config/gtk-3.0/gtk.css'
+    ~/.config/gtk-3.0/gtk.css: 'config/gtk-3.0/gtk.css'
 
     # NeoVim:
     ~/.config/nvim/init.vim: 'config/nvim/init.vim'
