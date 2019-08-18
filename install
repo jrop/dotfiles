@@ -2,6 +2,36 @@
 
 set -e
 
+if [ "Darwin" = "$(uname -s)" ]; then
+  if [ -z $(which git) ]; then
+    echo "error: git: not found"
+    echo xcode-select --install
+    exit 1
+  fi
+  if [ -z "$(which brew)" ]; then
+    echo "error: brew: not found"
+    echo /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    exit 1
+  fi
+fi
+
+if [ -z "$(which git)" ]; then
+  echo "error: git: not found"
+  exit 1;
+fi
+if [ -z "$(which curl)" ]; then
+  echo "error: curl: not found"
+  exit 1;
+fi
+if [ -z "$(which python)" ]; then
+  echo "error: python: not found"
+  exit 1;
+fi
+
+if [ -z "$(which node)" ]; then
+  echo "warning: node: not found"
+fi
+
 CONFIG="install.conf.yaml"
 DOTBOT_DIR="dotbot"
 
