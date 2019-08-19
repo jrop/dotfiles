@@ -28,3 +28,8 @@ set -gx LD_LIBRARY_PATH "$HOME/.local/lib:$LD_LIBRARY_PATH"
 
 set -gx SPACEFISH_PROMPT_ADD_NEWLINE false
 set -gx SPACEFISH_PACKAGE_SHOW false
+
+# VI-mode (hybrid):
+set -g fish_key_bindings fish_hybrid_key_bindings
+bind -M insert -m default jj force-repaint
+
