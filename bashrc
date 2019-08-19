@@ -25,6 +25,10 @@ function get_bashit() {
 function get_nvm() {
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | PROFILE=/dev/null bash
 }
+function get_neovim_appimg() {
+  curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+  chmod u+x nvim.appimage
+}
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
