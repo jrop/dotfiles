@@ -11,8 +11,6 @@
           set_fact: dotfiles_user={{dotfiles_user_cmd.stdout}}
       tags: always
 
-    - import_tasks: tasks/files.yml
-
     - import_tasks: tasks/linux.yml
       when: ansible_os_family == "Debian"
 

@@ -7,35 +7,6 @@
   tags: pkgs
   when: ansible_os_family != "Darwin"
 
-- name: Install bash-it
-  import_role:
-    name: ansible-bash_it
-  vars:
-    users: "{{dotfiles_user}}"
-    theme: "{{bash_it_theme | default('minimal')}}"
-    aliases: [general]
-    plugins: [alias-completion, base]
-    completions:
-      - awscli
-      - bash-it
-      - brew
-      - docker-compose
-      - docker-machine
-      - docker
-      - git
-      - kubectl
-      - npm
-      - nvm
-      - ssh
-      - system
-      - tmux
-  tags: [bash-it]
-
-- name: rustup.sh
-  shell: curl https://sh.rustup.rs -sSf | sh -s -- -y
-  args:
-    warn: false
-
 - name: add components
   shell: ~/.cargo/bin/rustup component add {{ item }}
   with_items: [clippy]

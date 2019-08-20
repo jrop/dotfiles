@@ -29,6 +29,9 @@ function get_neovim_appimg() {
   curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
   chmod u+x nvim.appimage
 }
+function get_rustup() {
+  curl https://sh.rustup.rs -sSf | sh -s -- -y
+}
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
