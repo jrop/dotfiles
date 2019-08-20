@@ -26,6 +26,10 @@ function get_bashit() {
 function get_nvm() {
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | PROFILE=/dev/null bash
 }
+function get_fzf() {
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+}
 function get_neovim_appimg() {
   curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
   chmod u+x nvim.appimage
@@ -34,15 +38,19 @@ function get_rustup() {
   curl https://sh.rustup.rs -sSf | sh -s -- -y
 }
 
+# Bash-it
+if [ -f "$BASH_IT/bash_it.sh" ]; then 
+  export BASH_IT="$HOME/.bash_it"
+  export BASH_IT_THEME=minimal
+  [ -f $BASH_IT/bash_it.sh ] && source $BASH_IT/bash_it.sh
+fi
+
 # NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -f "$HOME/.nvm" ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
 
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# Bash-it
-export BASH_IT="$HOME/.bash_it"
-export BASH_IT_THEME=minimal
-[ -f $BASH_IT/bash_it.sh ] && source $BASH_IT/bash_it.sh
