@@ -31,7 +31,7 @@ let g:coc_global_extensions = [
 	\ 'coc-marketplace',
 	\ 'coc-prettier',
 	\ 'coc-rls',
-	\ 'coc-tsserer',
+	\ 'coc-tsserver',
 	\ 'coc-yaml'
 	\ ]
 
