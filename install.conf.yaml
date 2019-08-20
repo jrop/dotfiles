@@ -14,6 +14,7 @@
     ~/.config/fish/fishfile: 'config/fish/fishfile'
     ~/.config/fish/functions/fish_greeting.fish: 'config/fish/functions/fish_greeting.fish'
     ~/.config/fish/functions/get_neovim_appimg.fish: 'config/fish/functions/get_neovim_appimg.fish'
+    ~/.config/fish/functions/get_rustup.fish: 'config/fish/functions/get_rustup.fish'
     ~/.config/fish/functions/gh-sync.fish: 'config/fish/functions/gh-sync.fish'
     ~/.config/fish/functions/kubectl-switch.fish: 'config/fish/functions/kubectl-switch.fish'
 
