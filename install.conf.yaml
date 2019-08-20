@@ -8,6 +8,7 @@
 
 - link:
     ~/.bashrc:
+    ~/Brewfile: Brewfile
 
     # Fish:
     ~/.config/fish/config.fish: 'config/fish/config.fish'
