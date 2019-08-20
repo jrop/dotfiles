@@ -26,7 +26,7 @@ if has('nvim')
 	tmap <C-[> <C-\><C-n>
 endif
 
-let g:coc_global_extensions = ['coc-json', 'coc-marketplace', 'coc-rls', 'coc-tsserver', 'coc-yaml']
+let g:coc_global_extensions = ['coc-json', 'coc-marketplace', 'coc-prettier', 'coc-rls', 'coc-tsserver', 'coc-yaml']
 
 if has('nvim')
 	let plug_dir = '~/.local/share/nvim/plugged'
@@ -173,6 +173,10 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
+" Coc: use prettier to format files:
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 " set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
