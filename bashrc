@@ -17,6 +17,7 @@ export EDITOR=nvim
 export HISTCONTROL=ignoreboth
 export PATH="$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export LD_LIBRARY_PATH="~/.local/lib:$LD_LIBRARY_PATH"
+export FZF_DEFAULT_COMMAND="rg --files"
 
 function get_bashit() {
   git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it

@@ -21,6 +21,7 @@
       - kafkacat
       - kakoune
       - kubernetes-cli
+      - lastpass-cli
       - maven
       - mkcert
       - neovim

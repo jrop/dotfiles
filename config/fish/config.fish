@@ -25,6 +25,7 @@ set -gx EDITOR nvim
 set -gx KUBE_EDITOR "code -w"
 set -gx PATH /snap/bin $HOME/go/bin $HOME/.local/bin $HOME/.cargo/bin $PATH
 set -gx LD_LIBRARY_PATH "$HOME/.local/lib:$LD_LIBRARY_PATH"
+set -gx FZF_DEFAULT_COMMAND "rg --files"
 
 set -gx SPACEFISH_PROMPT_ADD_NEWLINE false
 set -gx SPACEFISH_PACKAGE_SHOW false
