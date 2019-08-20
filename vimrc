@@ -26,7 +26,14 @@ if has('nvim')
 	tmap <C-[> <C-\><C-n>
 endif
 
-let g:coc_global_extensions = ['coc-json', 'coc-marketplace', 'coc-prettier', 'coc-rls', 'coc-tsserver', 'coc-yaml']
+let g:coc_global_extensions = [
+	\ 'coc-json',
+	\ 'coc-marketplace',
+	\ 'coc-prettier',
+	\ 'coc-rls',
+	\ 'coc-tsserer',
+	\ 'coc-yaml'
+	\ ]
 
 if has('nvim')
 	let plug_dir = '~/.local/share/nvim/plugged'
@@ -42,33 +49,33 @@ else
 	endif
 endif
 call plug#begin(plug_dir)
-	Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+	Plug 'airblade/vim-gitgutter'
+	Plug 'christianrondeau/vim-base64'
+	Plug 'dag/vim-fish'
+	Plug 'diepm/vim-rest-console'
+	Plug 'junegunn/fzf'
 	Plug 'leafgarland/typescript-vim'
+	Plug 'luochen1990/indent-detector.vim'
 	Plug 'mhartington/oceanic-next'
+	Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 	Plug 'prettier/vim-prettier', {
 		\ 'do': 'yarn install',
 		\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
-	Plug 'diepm/vim-rest-console'
-	Plug 'tpope/vim-fugitive'
-	Plug 'airblade/vim-gitgutter'
-	Plug 'scrooloose/nerdtree'
 	Plug 'scrooloose/nerdcommenter'
-	Plug 'junegunn/fzf'
-	Plug 'christianrondeau/vim-base64'
-	Plug 'dag/vim-fish'
+	Plug 'scrooloose/nerdtree'
+	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-surround'
-	Plug 'luochen1990/indent-detector.vim'
 call plug#end()
 
 if (has("termguicolors"))
- set termguicolors
+	set termguicolors
 endif
 syntax enable
 colorscheme OceanicNext
 
 augroup filetypedetect
-  au BufRead,BufNewFile *.jsx set filetype=javascript.jsx
-  au BufRead,BufNewFile *.tsx set filetype=typescript.tsx
+	au BufRead,BufNewFile *.jsx set filetype=javascript.jsx
+	au BufRead,BufNewFile *.tsx set filetype=typescript.tsx
 augroup END
 
 
@@ -95,14 +102,14 @@ set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+	\ pumvisible() ? "\<C-n>" :
+	\ <SID>check_back_space() ? "\<TAB>" :
+	\ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
@@ -126,11 +133,11 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+	if (index(['vim','help'], &filetype) >= 0)
+		execute 'h '.expand('<cword>')
+	else
+		call CocAction('doHover')
+	endif
 endfunction
 
 " Highlight symbol under cursor on CursorHold
@@ -144,11 +151,11 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+	autocmd!
+	" Setup formatexpr specified filetype(s).
+	autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+	" Update signature help on jump placeholder
+	autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
