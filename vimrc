@@ -57,6 +57,7 @@ call plug#begin(plug_dir)
 	Plug 'christianrondeau/vim-base64'
 	Plug 'dag/vim-fish'
 	Plug 'tpope/vim-surround'
+	Plug 'luochen1990/indent-detector.vim'
 call plug#end()
 
 if (has("termguicolors"))
