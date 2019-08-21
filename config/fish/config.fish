@@ -4,8 +4,7 @@ if not functions -q fisher
   fish -c fisher
 end
 
-if status is-interactive
-and not set -q TMUX
+if status is-interactive; and not set -q TMUX; and which tmux
   exec tmux
 end
 
