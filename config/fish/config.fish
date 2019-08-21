@@ -1,5 +1,5 @@
 if not functions -q fisher
-  set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+  set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME $HOME/.config
   curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
   fish -c fisher
 end
@@ -22,9 +22,19 @@ abbr -a moff "tmux set mouse off"
 abbr -a vi "nvim"
 
 set -gx EDITOR nvim
-set -gx KUBE_EDITOR "code -w"
-set -gx PATH /snap/bin $HOME/go/bin $HOME/.local/bin $HOME/.cargo/bin $PATH
-set -gx LD_LIBRARY_PATH "$HOME/.local/lib:$LD_LIBRARY_PATH"
+
+# PATH
+for p in /snap/bin $HOME/go/bin $HOME/.local/bin $HOME/.cargo/bin
+  if [ -d $p ]
+    set -gx PATH $p $PATH
+  end
+end
+
+# LD_LIBRARY_PATH
+if [ -d $HOME/.local/lib ]
+  set -gx LD_LIBRARY_PATH $HOME/.local/lib $LD_LIBRARY_PATH
+end
+
 set -gx FZF_DEFAULT_COMMAND "rg --files"
 
 set -gx SPACEFISH_PROMPT_ADD_NEWLINE false
