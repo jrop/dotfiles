@@ -18,6 +18,7 @@ nmap <C-l> :wincmd l<CR>
 
 nmap <C-t> :FZF<CR>
 nmap <C-n> :NERDTreeToggle<CR>
+nmap <C-p> :Buffers<CR>
 map <Leader>es :e $MYVIMRC<CR>
 map <Leader>s :source $MYVIMRC<CR>
 if has('nvim')
@@ -53,7 +54,8 @@ call plug#begin(plug_dir)
 	Plug 'christianrondeau/vim-base64'
 	Plug 'dag/vim-fish'
 	Plug 'diepm/vim-rest-console'
-	Plug 'junegunn/fzf'
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	Plug 'junegunn/fzf.vim'
 	Plug 'leafgarland/typescript-vim'
 	Plug 'luochen1990/indent-detector.vim'
 	Plug 'mhartington/oceanic-next'
