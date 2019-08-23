@@ -16,11 +16,12 @@ nmap <C-j> :wincmd j<CR>
 nmap <C-k> :wincmd k<CR>
 nmap <C-l> :wincmd l<CR>
 
-nmap <C-t> :FZF<CR>
-nmap <C-n> :NERDTreeToggle<CR>
-nmap <C-p> :Buffers<CR>
+map <C-t> :FZF<CR>
+map <C-n> :NERDTreeToggle<CR>
+map <C-p> :Buffers<CR>
 map <Leader>es :e $MYVIMRC<CR>
 map <Leader>s :source $MYVIMRC<CR>
+map <Leader>n :nohlsearch<CR>
 if has('nvim')
 	tmap jj <C-\><C-n>
 	tmap <Esc> <C-\><C-n>
