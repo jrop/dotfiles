@@ -1,0 +1,33 @@
+- defaults:
+    link:
+      force: true
+      create: true
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.bashrc:
+    ~/Brewfile: Brewfile
+
+    # Fish:
+    ~/.config/fish/config.fish: 'config/fish/config.fish'
+    ~/.config/fish/fishfile: 'config/fish/fishfile'
+    ~/.config/fish/functions/fish_greeting.fish: 'config/fish/functions/fish_greeting.fish'
+    ~/.config/fish/functions/get_fzf.fish: 'config/fish/functions/get_fzf.fish'
+    ~/.config/fish/functions/get_neovim_appimg.fish: 'config/fish/functions/get_neovim_appimg.fish'
+    ~/.config/fish/functions/get_rustup.fish: 'config/fish/functions/get_rustup.fish'
+    ~/.config/fish/functions/gh-sync.fish: 'config/fish/functions/gh-sync.fish'
+    ~/.config/fish/functions/kubectl-switch.fish: 'config/fish/functions/kubectl-switch.fish'
+
+    ~/.config/gtk-3.0/gtk.css: 'config/gtk-3.0/gtk.css'
+
+    # NeoVim:
+    ~/.config/nvim/init.vim: 'config/nvim/init.vim'
+
+    ~/.editorconfig:
+    ~/.gitconfig:
+    ~/.inputrc:
+    ~/.tmux.conf:
+    ~/.vimrc:
+

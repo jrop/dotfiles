@@ -1,0 +1,16 @@
+- name: Setup vi alternatives to use NeoVim
+  become: yes
+  become_user: root
+  alternatives:
+    name: vi
+    path: /usr/bin/nvim
+  tags: pkgs
+  when: ansible_os_family != "Darwin"
+
+- name: add components
+  shell: ~/.cargo/bin/rustup component add {{ item }}
+  with_items: [clippy]
+
+- name: cargo install packages
+  shell: "[ ! -e ~/.cargo/bin/{{ item }} ] && ~/.cargo/bin/rustup run stable cargo install {{ item }} || exit 0"
+  with_items: [procs, rustfmt]

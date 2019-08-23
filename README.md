@@ -1,18 +1,13 @@
 dotfiles
 ========
 
-My dotfiles, delivered via Ansible.
+My dotfiles, and Ansible playbooks.
 
 ## Install
 
 ```sh
-curl -sSL https://raw.githubusercontent.com/jrop/dotfiles/master/install.sh | sh
-# or:
-wget -O - https://raw.githubusercontent.com/jrop/dotfiles/master/install.sh | sh
-
-# Install rc files only:
-ansible-playbook playbook.yml --tags ""
-
-# For everything:
-ansible-playbook playbook.yml
+git clone --recurse-submodules https://github.com/jrop/dotfiles
+# or git clone --recurse-submodules git@github.com:jrop/dotfiles.git
+cd dotfiles
+./install
 ```
