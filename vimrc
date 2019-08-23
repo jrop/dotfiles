@@ -60,6 +60,7 @@ call plug#begin(plug_dir)
 	Plug 'christianrondeau/vim-base64'
 	Plug 'dag/vim-fish'
 	Plug 'diepm/vim-rest-console'
+	Plug 'jiangmiao/auto-pairs'
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 	Plug 'leafgarland/typescript-vim'
