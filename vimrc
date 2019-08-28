@@ -17,7 +17,7 @@ nmap <C-k> :wincmd k<CR>
 nmap <C-l> :wincmd l<CR>
 
 map <C-t> :FZF<CR>
-map <C-f> :NERDTreeFind<CR>
+map <Leader>f :NERDTreeFind<CR>
 map <C-n> :NERDTreeToggle<CR>
 map <C-p> :Buffers<CR>
 map <Leader>es :e $MYVIMRC<CR>
