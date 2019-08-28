@@ -2,7 +2,3 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 
-[submodule "dotbot/lib/pyyaml"]
-	path = dotbot/lib/pyyaml
-	url = https://github.com/yaml/pyyaml
-	ignore = dirty
