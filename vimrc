@@ -17,12 +17,17 @@ nmap <C-k> :wincmd k<CR>
 nmap <C-l> :wincmd l<CR>
 
 map <C-t> :FZF<CR>
-map <Leader>f :NERDTreeFind<CR>
-map <C-n> :NERDTreeToggle<CR>
-map <C-p> :Buffers<CR>
+
+map <Leader>tf :NERDTreeFind<CR>
+map <Leader>tr :NERDTreeRefreshRoot<CR>
+map <Leader>tt :NERDTreeToggle<CR>
 map <Leader>es :e $MYVIMRC<CR>
 map <Leader>s :source $MYVIMRC<CR>
 map <Leader>n :nohlsearch<CR>
+map <Leader>bb :Buffers<CR>
+map <Leader>bc :bnext<CR>
+map <Leader>bp :bprevious<CR>
+map <Leader>bn :bnext<CR>
 
 "make < > shifts keep selection
 vnoremap < <gv
@@ -73,6 +78,7 @@ call plug#begin(plug_dir)
 		\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'scrooloose/nerdtree'
+	Plug 'terryma/vim-multiple-cursors'
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-surround'
 call plug#end()
