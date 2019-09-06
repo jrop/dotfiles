@@ -76,6 +76,7 @@ call plug#begin(plug_dir)
 	Plug 'prettier/vim-prettier', {
 		\ 'do': 'yarn install',
 		\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+	Plug 'rust-lang/rust.vim'
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'scrooloose/nerdtree'
 	Plug 'terryma/vim-multiple-cursors'
