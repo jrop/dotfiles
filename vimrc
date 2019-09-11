@@ -1,3 +1,4 @@
+set nowrap
 set number
 set mouse=a
 

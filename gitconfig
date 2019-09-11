@@ -4,6 +4,7 @@
 
 [alias]
 	conflicts = diff --name-only --diff-filter=U
+	check-conflicts = diff --check
 	hist = show --stat
 	l = log --graph --oneline --branches --decorate --all
 	s = status -s
