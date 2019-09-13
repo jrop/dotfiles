@@ -30,6 +30,8 @@ map <Leader>bc :bnext<CR>
 map <Leader>bp :bprevious<CR>
 map <Leader>bn :bnext<CR>
 
+autocmd FileType rust map <LocalLeader>p :RustFmt<CR>
+
 "make < > shifts keep selection
 vnoremap < <gv
 vnoremap > >gv
