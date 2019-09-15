@@ -19,6 +19,15 @@ export PATH="$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH:$HOME/.yarn/bi
 export LD_LIBRARY_PATH="~/.local/lib:$LD_LIBRARY_PATH"
 export FZF_DEFAULT_COMMAND="rg --files"
 
+function add_ssh_key_to_github() {
+  if [ ! -f ~/.ssh/id_rsa.pub ]; then
+    ssh-keygen -t rsa -b 2048 -N "" -f ~/.ssh/id_rsa
+  fi
+  echo -n 'GitHub password for jrop: '
+  read -s pw
+  key=$(cat ~/.ssh/id_rsa.pub)
+  curl -u "jrop:$pw" --data '{"title":"'"(hostname)"'","key":"'"$key"'"}' https://api.github.com/user/keys
+}
 function get_bashit() {
   git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
   ~/.bash_it/install.sh --no-modify-config
