@@ -29,6 +29,7 @@ map <Leader>bb :Buffers<CR>
 map <Leader>bc :bnext<CR>
 map <Leader>bp :bprevious<CR>
 map <Leader>bn :bnext<CR>
+map <Leader>rr :set relativenumber!<CR>
 
 autocmd FileType rust map <LocalLeader>p :RustFmt<CR>
 
