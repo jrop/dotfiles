@@ -1,5 +1,6 @@
 set nowrap
 set number
+set relativenumber
 set mouse=a
 
 hi NonText ctermfg=DarkGray guifg=gray
