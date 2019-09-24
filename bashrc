@@ -28,6 +28,16 @@ function add_ssh_key_to_github() {
   key=$(cat ~/.ssh/id_rsa.pub)
   curl -u "jrop:$pw" --data '{"title":"'"(hostname)"'","key":"'"$key"'"}' https://api.github.com/user/keys
 }
+function add_ssh_key_to_gitlab() {
+  if [ ! -f ~/.ssh/id_rsa.pub ]; then
+    ssh-keygen -t rsa -b 2048 -N "" -f ~/.ssh/id_rsa
+  fi
+  echo -n 'GitLab token: '
+  read -s tkn
+  key=$(cat ~/.ssh/id_rsa.pub)
+  curl -X POST -H "PRIVATE-TOKEN: $tkn" -H 'Content-Type: application/json' \
+    --data "{\"title\": \"$hn\", \"key\": \"$key\"}" "https://gitlab.com/api/v4/user/keys"
+}
 function get_bashit() {
   git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
   ~/.bash_it/install.sh --no-modify-config

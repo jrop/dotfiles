@@ -14,6 +14,7 @@
     ~/.config/fish/config.fish: 'config/fish/config.fish'
     ~/.config/fish/fishfile: 'config/fish/fishfile'
     ~/.config/fish/functions/add_ssh_key_to_github.fish: 'config/fish/functions/add_ssh_key_to_github.fish'
+    ~/.config/fish/functions/add_ssh_key_to_gitlab.fish: 'config/fish/functions/add_ssh_key_to_gitlab.fish'
     ~/.config/fish/functions/fish_greeting.fish: 'config/fish/functions/fish_greeting.fish'
     ~/.config/fish/functions/get_fzf.fish: 'config/fish/functions/get_fzf.fish'
     ~/.config/fish/functions/get_homebrew.fish: 'config/fish/functions/get_homebrew.fish'
