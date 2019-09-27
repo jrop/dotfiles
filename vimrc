@@ -5,7 +5,7 @@ set mouse=a
 
 hi NonText ctermfg=DarkGray guifg=gray
 hi SpecialKey ctermfg=DarkGray
-set listchars=eol:$,trail:·,tab:»\ ,extends:>,precedes:<,nbsp:.
+set listchars=eol:$,trail:·,tab:»\ ,nbsp:.
 set list
 
 set tabstop=2
