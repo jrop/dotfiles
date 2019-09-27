@@ -27,6 +27,9 @@
     # NeoVim:
     ~/.config/nvim/init.vim: 'config/nvim/init.vim'
 
+    # Starship:
+    ~/.config/starship.toml: 'config/starship.toml'
+
     ~/.editorconfig:
     ~/.gitconfig:
     ~/.inputrc:

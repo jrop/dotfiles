@@ -16,7 +16,7 @@ alias vim="nvim"
 export EDITOR=nvim
 export HISTCONTROL=ignoreboth
 export PATH="$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export LD_LIBRARY_PATH="~/.local/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
 export FZF_DEFAULT_COMMAND="rg --files"
 
 function add_ssh_key_to_github() {
@@ -43,7 +43,7 @@ function get_homebrew() {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 function get_neovim_appimg() {
-  curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+  curl -LO https://github.com/neovim/neovim/releases/download/v0.4.2/nvim.appimage
   chmod u+x nvim.appimage
 }
 function get_rustup() {
