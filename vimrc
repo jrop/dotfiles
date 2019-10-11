@@ -52,6 +52,7 @@ let g:coc_global_extensions = [
 	\ 'coc-tsserver',
 	\ 'coc-yaml'
 	\ ]
+let g:NERDTreeWinPos = "right"
 
 if has('nvim')
 	let plug_dir = '~/.local/share/nvim/plugged'
