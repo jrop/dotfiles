@@ -47,4 +47,7 @@ set -gx SPACEFISH_PACKAGE_SHOW false
 set -g fish_key_bindings fish_hybrid_key_bindings
 bind -M insert -m default jj force-repaint
 
-which -s starship; and eval (starship init fish)
+which starship > /dev/null
+if [ $status -eq 0 ]
+  eval (starship init fish)
+end
