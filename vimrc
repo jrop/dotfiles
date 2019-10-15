@@ -70,6 +70,7 @@ endif
 call plug#begin(plug_dir)
 	Plug 'airblade/vim-gitgutter'
 	Plug 'christianrondeau/vim-base64'
+	Plug 'christoomey/vim-tmux-navigator'
 	Plug 'dag/vim-fish'
 	Plug 'diepm/vim-rest-console'
 	Plug 'jiangmiao/auto-pairs'
