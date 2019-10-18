@@ -32,7 +32,11 @@ map <Leader>bp :bprevious<CR>
 map <Leader>bn :bnext<CR>
 map <Leader>rr :set relativenumber!<CR>
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
 autocmd FileType rust map <LocalLeader>p :RustFmt<CR>
+autocmd BufNewFile,BufRead Dockerfile.* set filetype=Dockerfile
 
 "make < > shifts keep selection
 vnoremap < <gv
