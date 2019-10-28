@@ -10,7 +10,8 @@ set list
 
 set tabstop=2
 set shiftwidth=2
-imap jj <Esc>
+
+let mapleader=" "
 imap <C-[> <Esc>
 
 nmap <C-h> :wincmd h<CR>
@@ -31,6 +32,8 @@ map <Leader>bc :bnext<CR>
 map <Leader>bp :bprevious<CR>
 map <Leader>bn :bnext<CR>
 map <Leader>rr :set relativenumber!<CR>
+map <Leader>gs :Gstatus<CR>
+map <Leader>gc :Gcommit<CR>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %

@@ -25,6 +25,7 @@ abbr -a ts-node "node -r ts-node/register"
 abbr -a vi "nvim"
 
 set -gx EDITOR nvim
+set -gx JOBS 13
 
 # PATH
 for p in /snap/bin $HOME/go/bin $HOME/.local/bin $HOME/.cargo/bin
