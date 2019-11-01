@@ -12,6 +12,7 @@ set tabstop=2
 set shiftwidth=2
 
 let mapleader=" "
+let maplocalleader=" "
 imap <C-[> <Esc>
 
 nmap <C-h> :wincmd h<CR>
@@ -34,6 +35,9 @@ map <Leader>bn :bnext<CR>
 map <Leader>rr :set relativenumber!<CR>
 map <Leader>gs :Gstatus<CR>
 map <Leader>gc :Gcommit<CR>
+map <Leader>p :Prettier<CR>
+map <Leader>ww :MatchupWhereAmI<CR>
+map <Leader>wa :MatchupWhereAmI??<CR>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -76,6 +80,7 @@ else
 endif
 call plug#begin(plug_dir)
 	Plug 'airblade/vim-gitgutter'
+	Plug 'andymass/vim-matchup'
 	Plug 'christianrondeau/vim-base64'
 	Plug 'christoomey/vim-tmux-navigator'
 	Plug 'dag/vim-fish'
@@ -241,10 +246,10 @@ nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
