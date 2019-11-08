@@ -79,6 +79,7 @@ else
 	endif
 endif
 call plug#begin(plug_dir)
+	Plug 'AndrewRadev/splitjoin.vim'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'andymass/vim-matchup'
 	Plug 'christianrondeau/vim-base64'
