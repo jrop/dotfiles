@@ -1,3 +1,6 @@
+[checkout]
+	defaultRemote = origin
+
 [user]
 	email = jrapodaca@gmail.com
 	name = Jonathan Apodaca

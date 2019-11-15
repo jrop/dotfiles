@@ -30,6 +30,15 @@ abbr -a tsn "node -r ts-node/register"
 abbr -a ts-node "node -r ts-node/register"
 abbr -a vi "nvim"
 
+abbr -a ldl "tail -f /var/log/system.log"
+abbr -a lct "sudo launchctl"
+abbr -a lctu "sudo launchctl unload"
+abbr -a lctl "sudo launchctl load"
+
+abbr -a sct "sudo systemctl"
+abbr -a sctdr "sudo systemctl daemon-reload"
+abbr -a jct "sudo journalctl"
+
 set -gx EDITOR nvim
 set -gx JOBS 13
 
