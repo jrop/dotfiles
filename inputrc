@@ -6,7 +6,6 @@ set show-mode-in-prompt on
 
 $if mode=vi
   set keymap vi-insert
-  "jj": vi-movement-mode
 
   #
   # https://www.gnu.org/software/bash/manual/html_node/Bindable-Readline-Commands.html

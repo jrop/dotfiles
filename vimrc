@@ -1,7 +1,9 @@
+set mouse=a
 set nowrap
 set number
 set relativenumber
-set mouse=a
+set splitbelow
+set splitright
 
 hi NonText ctermfg=DarkGray guifg=gray
 hi SpecialKey ctermfg=DarkGray
@@ -38,6 +40,9 @@ map <Leader>gc :Gcommit<CR>
 map <Leader>p :Prettier<CR>
 map <Leader>ww :MatchupWhereAmI<CR>
 map <Leader>wa :MatchupWhereAmI??<CR>
+map <Leader>is :set expandtab<CR>
+map <Leader>it :set noexpandtab<CR>
+map <Leader>ir gg=G<CR>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -50,7 +55,6 @@ vnoremap < <gv
 vnoremap > >gv
 
 if has('nvim')
-	tmap jj <C-\><C-n>
 	tmap <Esc> <C-\><C-n>
 	tmap <C-[> <C-\><C-n>
 endif
