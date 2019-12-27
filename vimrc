@@ -1,5 +1,3 @@
-set cursorline
-set cursorcolumn
 set mouse=a
 set nowrap
 set number
