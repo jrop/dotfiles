@@ -1,3 +1,4 @@
+set guifont=Hack\ Nerd\ Font
 set mouse=a
 set nowrap
 set number
@@ -60,6 +61,8 @@ if has('nvim')
 	tmap <C-[> <C-\><C-n>
 endif
 
+let g:airline_powerline_fonts = 1
+let g:calendar_google_calendar = 1
 let g:coc_global_extensions = [
 	\ 'coc-json',
 	\ 'coc-marketplace',
@@ -97,19 +100,23 @@ call plug#begin(plug_dir)
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 	Plug 'justinmk/vim-sneak'
+	Plug 'itchyny/calendar.vim'
 	Plug 'leafgarland/typescript-vim'
-	Plug 'luochen1990/indent-detector.vim'
 	Plug 'mhartington/oceanic-next'
+	Plug 'matze/vim-move'
 	Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 	Plug 'prettier/vim-prettier', {
 		\ 'do': 'yarn install',
 		\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+	Plug 'ryanoasis/vim-devicons'
 	Plug 'rust-lang/rust.vim'
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'scrooloose/nerdtree'
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'tpope/vim-fugitive'
+	Plug 'tpope/vim-sleuth'
 	Plug 'tpope/vim-surround'
+	Plug 'vim-airline/vim-airline'
 call plug#end()
 
 if (has("termguicolors"))

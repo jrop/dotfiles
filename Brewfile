@@ -57,3 +57,6 @@ cask "visual-studio-code"
 cask "vlc"
 cask "xquartz"
 
+tap "homebrew/cask-fonts"
+cask "font-hack-nerd-font"
+
