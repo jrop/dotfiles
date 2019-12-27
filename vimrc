@@ -68,6 +68,7 @@ let g:coc_global_extensions = [
 	\ 'coc-yaml'
 	\ ]
 let g:NERDTreeWinPos = "right"
+let g:sneak#label = 1
 
 if has('nvim')
 	let plug_dir = '~/.local/share/nvim/plugged'
@@ -93,6 +94,7 @@ call plug#begin(plug_dir)
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
+	Plug 'justinmk/vim-sneak'
 	Plug 'leafgarland/typescript-vim'
 	Plug 'luochen1990/indent-detector.vim'
 	Plug 'mhartington/oceanic-next'

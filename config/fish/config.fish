@@ -67,3 +67,8 @@ which starship > /dev/null
 if [ $status -eq 0 ]
   eval (starship init fish)
 end
+
+which direnv > /dev/null
+if [ $status -eq 0 ]
+  direnv hook fish | source
+end
