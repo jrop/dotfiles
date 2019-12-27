@@ -1,3 +1,5 @@
+# Install with `brew bundle ./Brewfile`
+
 brew "ansible"
 brew "autossh"
 brew "bash"
