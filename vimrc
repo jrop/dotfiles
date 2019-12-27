@@ -1,3 +1,5 @@
+set cursorline
+set cursorcolumn
 set mouse=a
 set nowrap
 set number
@@ -24,25 +26,26 @@ nmap <C-l> :wincmd l<CR>
 
 map <C-t> :FZF<CR>
 
-map <Leader>tf :NERDTreeFind<CR>
-map <Leader>tr :NERDTreeRefreshRoot<CR>
-map <Leader>tt :NERDTreeToggle<CR>
-map <Leader>es :e $MYVIMRC<CR>
-map <Leader>s :source $MYVIMRC<CR>
-map <Leader>n :nohlsearch<CR>
 map <Leader>bb :Buffers<CR>
 map <Leader>bc :bnext<CR>
-map <Leader>bp :bprevious<CR>
 map <Leader>bn :bnext<CR>
-map <Leader>rr :set relativenumber!<CR>
-map <Leader>gs :Gstatus<CR>
+map <Leader>bp :bprevious<CR>
+map <Leader>es :e $MYVIMRC<CR>
 map <Leader>gc :Gcommit<CR>
-map <Leader>p :Prettier<CR>
-map <Leader>ww :MatchupWhereAmI<CR>
-map <Leader>wa :MatchupWhereAmI??<CR>
+map <Leader>gs :Gstatus<CR>
 map <Leader>is :set expandtab<CR>
 map <Leader>it :set noexpandtab<CR>
 map <Leader>ir gg=G<CR>
+map <Leader>n :nohlsearch<CR>
+map <Leader>p :Prettier<CR>
+map <Leader>rr :set relativenumber!<CR>
+map <Leader>s :source $MYVIMRC<CR>
+map <Leader>tf :NERDTreeFind<CR>
+map <Leader>tr :NERDTreeRefreshRoot<CR>
+map <Leader>tt :NERDTreeToggle<CR>
+map <Leader>wa :MatchupWhereAmI??<CR>
+map <Leader>wc :set cursorline!<CR>:set cursorcolumn!<CR>
+map <Leader>ww :MatchupWhereAmI<CR>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -84,6 +87,7 @@ else
 	endif
 endif
 call plug#begin(plug_dir)
+	Plug 'alampros/vim-styled-jsx'
 	Plug 'AndrewRadev/splitjoin.vim'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'andymass/vim-matchup'
