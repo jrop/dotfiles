@@ -29,7 +29,8 @@ map <Leader>bb :Buffers<CR>
 map <Leader>bc :bnext<CR>
 map <Leader>bn :bnext<CR>
 map <Leader>bp :bprevious<CR>
-map <Leader>cmd :CocCommand<CR>
+map <Leader>cmd :Commands<CR>
+map <Leader>ccmd :CocCommand<CR>
 map <Leader>es :e $MYVIMRC<CR>
 map <Leader>gc :Gcommit<CR>
 map <Leader>gs :Gstatus<CR>
