@@ -39,6 +39,11 @@ abbr -a sct "sudo systemctl"
 abbr -a sctdr "sudo systemctl daemon-reload"
 abbr -a jct "sudo journalctl"
 
+which lsof > /dev/null
+if [ $status -eq 0 ]
+  abbr -a listening "lsof -iTCP -sTCP:LISTEN"
+end
+
 set -gx EDITOR nvim
 set -gx JOBS 13
 
