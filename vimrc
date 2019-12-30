@@ -102,6 +102,7 @@ call plug#begin(plug_dir)
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 	Plug 'justinmk/vim-sneak'
+	Plug 'honza/vim-snippets'
 	Plug 'itchyny/calendar.vim'
 	Plug 'leafgarland/typescript-vim'
 	Plug 'mhartington/oceanic-next'
@@ -114,6 +115,7 @@ call plug#begin(plug_dir)
 	Plug 'rust-lang/rust.vim'
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'scrooloose/nerdtree'
+	Plug 'SirVer/ultisnips'
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-sleuth'
