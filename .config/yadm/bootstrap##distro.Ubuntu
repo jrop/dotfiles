@@ -19,15 +19,12 @@ sudo apt install -y \
   neofetch \
   neovim \
   python \
-  pip \
   python3 \
-  pip3 \
   ripgrep \
   supervisor \
   telnet \
   tig \
   tmux \
-  truncate \
   unzip \
   watch \
   wget
