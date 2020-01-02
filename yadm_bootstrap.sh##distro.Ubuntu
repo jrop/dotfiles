@@ -1,0 +1,45 @@
+#!/bin/bash
+
+sudo apt update
+sudo apt install software-properties-common
+sudo apt-add-repository --yes --update ppa:ansible/ansible
+sudo apt install -y \
+  ansible \
+  build-essential \
+  curl \
+  fish \
+  fzf \
+  git
+  imagemagick \
+  jq \
+  kafkacat \
+  neofetch \
+  neovim \
+  python \
+  pip \
+  python3 \
+  pip3 \
+  ripgrep \
+  supervisor \
+  telnet \
+  tig \
+  tmux \
+  truncate \
+  watch \
+  wget
+
+command -v rustup >/dev/null 2>&1 || {
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+}
+command -v starship >/dev/null 2>&1 || {
+  curl -fsSL https://starship.rs/install.sh | bash
+}
+
+# Install Hack Font
+mkdir -p ~/.local/share/fonts
+if [ ! -f ~/.local/share/fonts/Hack.zip ]; then
+  curl -fLo ~/.local/share/fonts/Hack.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Hack.zip
+  cd ~/.local/share/fonts
+  gunzip Hack.zip
+  cd -
+fi

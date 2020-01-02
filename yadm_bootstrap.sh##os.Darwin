@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Install Homebrew:
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew bundle ~/.Brewfile
+
+command -v pip >/dev/null 2>&1 {
+  pip install --user ansible
+}
+command -v rustup >/dev/null 2>&1 || {
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+}
+command -v starship >/dev/null 2>&1 || {
+  curl -fsSL https://starship.rs/install.sh | bash
+}
