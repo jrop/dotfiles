@@ -1,5 +1,0 @@
-#!/bin/bash
-
-if [ -f ~/yadm_bootstrap.sh ]; then
-  source ~/yadm_bootstrap.sh
-fi
