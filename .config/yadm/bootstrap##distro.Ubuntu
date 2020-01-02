@@ -1,11 +1,11 @@
 #!/bin/bash
 
-apt update
-apt install software-properties-common
-apt-add-repository --yes ppa:ansible/ansible
-apt-add-repository --yes ppa:mmstick76/alacritty
-apt update
-apt install -y \
+sudo apt update
+sudo apt install software-properties-common
+sudo apt-add-repository --yes ppa:ansible/ansible
+sudo apt-add-repository --yes ppa:mmstick76/alacritty
+sudo apt update
+sudo apt install -y \
   alacritty \
   ansible \
   build-essential \
@@ -33,19 +33,19 @@ apt install -y \
   wget
 
 command -v node >/dev/null 2>&1 || {
-  curl -sL https://deb.nodesource.com/setup_12.x | -E bash -
+  curl -sL https://deb.nodesource.com/setup_12.x | -E sudo bash -
   apt install -y nodejs
 }
 
 command -v rustup >/dev/null 2>&1 || {
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo sh
 }
 command -v starship >/dev/null 2>&1 || {
-  curl -fsSL https://starship.rs/install.sh | bash
+  sudo curl -fsSL https://starship.rs/install.sh | bash
 }
 
 command -v yarn >/dev/null 2>&1 || {
-  curl -o- -L https://yarnpkg.com/install.sh | bash
+  sudo curl -o- -L https://yarnpkg.com/install.sh | bash
 }
 
 # Install Hack Font
