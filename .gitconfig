@@ -1,0 +1,15 @@
+[checkout]
+	defaultRemote = origin
+
+[user]
+	email = jrapodaca@gmail.com
+	name = Jonathan Apodaca
+
+[alias]
+	check-conflicts = diff --check
+	co = checkout
+	conflicts = diff --name-only --diff-filter=U
+	hist = show --stat
+	l = log --graph --oneline --branches --decorate --all
+	s = status -s
+	root = rev-parse --show-toplevel
