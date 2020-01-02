@@ -1,17 +1,18 @@
 #!/bin/bash
 
-sudo apt update
-sudo apt install software-properties-common
-sudo apt-add-repository --yes --update ppa:ansible/ansible
-sudo apt-add-repository --yes --update ppa:mmstick76/alacritty
-sudo apt install -y \
+apt update
+apt install software-properties-common
+apt-add-repository --yes ppa:ansible/ansible
+apt-add-repository --yes ppa:mmstick76/alacritty
+apt update
+apt install -y \
   alacritty \
   ansible \
   build-essential \
   curl \
   fish \
   fzf \
-  git
+  git \
   imagemagick \
   jq \
   kafkacat \
@@ -27,8 +28,14 @@ sudo apt install -y \
   tig \
   tmux \
   truncate \
+  unzip \
   watch \
   wget
+
+command -v node >/dev/null 2>&1 || {
+  curl -sL https://deb.nodesource.com/setup_12.x | -E bash -
+  apt install -y nodejs
+}
 
 command -v rustup >/dev/null 2>&1 || {
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -37,11 +44,15 @@ command -v starship >/dev/null 2>&1 || {
   curl -fsSL https://starship.rs/install.sh | bash
 }
 
+command -v yarn >/dev/null 2>&1 || {
+  curl -o- -L https://yarnpkg.com/install.sh | bash
+}
+
 # Install Hack Font
 mkdir -p ~/.local/share/fonts
 if [ ! -f ~/.local/share/fonts/Hack.zip ]; then
   curl -fLo ~/.local/share/fonts/Hack.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Hack.zip
   cd ~/.local/share/fonts
-  gunzip Hack.zip
+  unzip Hack.zip
   cd -
 fi
