@@ -71,7 +71,6 @@ end
 
 # VI-mode (hybrid):
 set -g fish_key_bindings fish_hybrid_key_bindings
-bind -M insert -m default jj force-repaint
 
 command -sq starship; and eval (starship init fish)
 command -sq direnv; and direnv hook fish | source

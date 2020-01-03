@@ -64,20 +64,22 @@ vnoremap < <gv
 vnoremap > >gv
 
 if has('nvim')
-	tmap <Esc> <C-\><C-n>
-	tmap <C-[> <C-\><C-n>
+  tmap <Esc> <C-\><C-n>
+  tmap <C-[> <C-\><C-n>
+  set wildoptions=pum
+  set pumblend=15
 endif
 
 let g:airline_powerline_fonts = 1
 let g:calendar_google_calendar = 1
 let g:coc_global_extensions = [
-	\ 'coc-json',
-	\ 'coc-marketplace',
-	\ 'coc-prettier',
-	\ 'coc-rust-analyzer',
-	\ 'coc-tsserver',
-	\ 'coc-yaml'
-	\ ]
+  \ 'coc-json',
+  \ 'coc-marketplace',
+  \ 'coc-prettier',
+  \ 'coc-rust-analyzer',
+  \ 'coc-tsserver',
+  \ 'coc-yaml'
+  \ ]
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
@@ -95,70 +97,70 @@ let g:NERDTreeWinPos = "right"
 let g:sneak#label = 1
 
 if has('nvim')
-	let plug_dir = '~/.local/share/nvim/plugged'
-	if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-		silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-	endif
+  let plug_dir = '~/.local/share/nvim/plugged'
+  if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  endif
 else
-	let plug_dir = '~/.vim/plugged'
-	if empty(glob('~/.vim/autoload/plug.vim'))
-		silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-	endif
+  let plug_dir = '~/.vim/plugged'
+  if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  endif
 endif
 call plug#begin(plug_dir)
-	Plug 'alampros/vim-styled-jsx'
-	Plug 'AndrewRadev/splitjoin.vim'
-	Plug 'airblade/vim-gitgutter'
-	Plug 'andymass/vim-matchup'
-	Plug 'christianrondeau/vim-base64'
-	Plug 'christoomey/vim-tmux-navigator'
-	Plug 'dag/vim-fish'
-	Plug 'diepm/vim-rest-console'
-	Plug 'fabi1cazenave/termopen.vim'
-	Plug 'jiangmiao/auto-pairs'
-	Plug 'joshdick/onedark.vim'
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-	Plug 'junegunn/fzf.vim'
-	Plug 'justinmk/vim-sneak'
-	Plug 'itchyny/calendar.vim'
-	Plug 'leafgarland/typescript-vim'
-	Plug 'mhartington/oceanic-next'
-	Plug 'matze/vim-move'
-	Plug 'neoclide/coc.nvim', {'tag': '*', 'do': {-> coc#util#install()}}
-	Plug 'prettier/vim-prettier', {
-		\ 'do': 'yarn install',
-		\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
-	Plug 'ryanoasis/vim-devicons'
-	Plug 'rust-lang/rust.vim'
-	Plug 'scrooloose/nerdcommenter'
-	Plug 'scrooloose/nerdtree'
-	Plug 'terryma/vim-multiple-cursors'
-	Plug 'tpope/vim-fugitive'
-	Plug 'tpope/vim-sleuth'
-	Plug 'tpope/vim-surround'
-	Plug 'vim-airline/vim-airline'
+Plug 'alampros/vim-styled-jsx'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'andymass/vim-matchup'
+Plug 'christianrondeau/vim-base64'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'dag/vim-fish'
+Plug 'diepm/vim-rest-console'
+Plug 'fabi1cazenave/termopen.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'joshdick/onedark.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'justinmk/vim-sneak'
+Plug 'itchyny/calendar.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'mhartington/oceanic-next'
+Plug 'matze/vim-move'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': {-> coc#util#install()}}
+Plug 'prettier/vim-prettier', {
+      \ 'do': 'yarn install',
+      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+Plug 'ryanoasis/vim-devicons'
+Plug 'rust-lang/rust.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 if (has("termguicolors"))
-	set termguicolors
+  set termguicolors
 endif
 syntax enable
 
 colorscheme OceanicNext
 function g:Oceanic()
-	colorscheme OceanicNext
+  colorscheme OceanicNext
 endfunction
 command! ThemeOceanic :call Oceanic()
 function g:OneDark()
-	colorscheme onedark
+  colorscheme onedark
 endfunction
 command! ThemeOneDark :call OneDark()
 
 augroup filetypedetect
-	au BufRead,BufNewFile *.jsx set filetype=javascript.jsx
-	au BufRead,BufNewFile *.tsx set filetype=typescript.tsx
+  au BufRead,BufNewFile *.jsx set filetype=javascript.jsx
+  au BufRead,BufNewFile *.tsx set filetype=typescript.tsx
 augroup END
 
 "
@@ -184,14 +186,14 @@ set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-	\ pumvisible() ? "\<C-n>" :
-	\ <SID>check_back_space() ? "\<TAB>" :
-	\ coc#refresh()
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
@@ -215,11 +217,11 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-	if (index(['vim','help'], &filetype) >= 0)
-		execute 'h '.expand('<cword>')
-	else
-		call CocAction('doHover')
-	endif
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
 endfunction
 
 " Highlight symbol under cursor on CursorHold
@@ -233,11 +235,11 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-	autocmd!
-	" Setup formatexpr specified filetype(s).
-	autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-	" Update signature help on jump placeholder
-	autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
