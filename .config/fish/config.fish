@@ -4,7 +4,7 @@ if not functions -q fisher
   fish -c fisher
 end
 
-if status is-interactive; and not set -q TMUX; and which tmux
+if status is-interactive; and not set -q TMUX; and command -sq tmux
   exec tmux
 end
 
@@ -39,28 +39,29 @@ abbr -a sct "sudo systemctl"
 abbr -a sctdr "sudo systemctl daemon-reload"
 abbr -a jct "sudo journalctl"
 
-which lsof > /dev/null
-if [ $status -eq 0 ]
-  abbr -a listening "lsof -iTCP -sTCP:LISTEN"
-end
+command -sq lsof; and abbr -a listening "lsof -P -iTCP -sTCP:LISTEN"
 
 set -gx EDITOR nvim
+set -gx FZF_DEFAULT_COMMAND "rg --files"
 set -gx JOBS 13
+set -gx SPACEFISH_PROMPT_ADD_NEWLINE false
+set -gx SPACEFISH_PACKAGE_SHOW false
+set -gx WASMTIME_HOME "$HOME/.wasmtime"
 
 # PATH
-for p in /snap/bin $HOME/go/bin $HOME/.local/bin $HOME/.cargo/bin
+for p in /snap/bin $HOME/go/bin $HOME/.local/bin $HOME/.cargo/bin $WASMTIME_HOME/bin
   if [ -d $p ]
-    set -gx PATH $p $PATH
+    string match -r "$p" "$PATH" > /dev/null; or set -gx PATH $p $PATH
   end
 end
 
 if [ -d /home/linuxbrew/.linuxbrew/ ]
-	set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew";
-	set -gx HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar";
-	set -gx HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew";
-	set -g fish_user_paths "/home/linuxbrew/.linuxbrew/bin" "/home/linuxbrew/.linuxbrew/sbin" $fish_user_paths;
-	set -q MANPATH; or set MANPATH ''; set -gx MANPATH "/home/linuxbrew/.linuxbrew/share/man" $MANPATH;
-	set -q INFOPATH; or set INFOPATH ''; set -gx INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH;
+  set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew";
+  set -gx HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar";
+  set -gx HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew";
+  set -g fish_user_paths "/home/linuxbrew/.linuxbrew/bin" "/home/linuxbrew/.linuxbrew/sbin" $fish_user_paths;
+  set -q MANPATH; or set MANPATH ''; set -gx MANPATH "/home/linuxbrew/.linuxbrew/share/man" $MANPATH;
+  set -q INFOPATH; or set INFOPATH ''; set -gx INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH;
 end
 
 # LD_LIBRARY_PATH
@@ -68,25 +69,9 @@ if [ -d $HOME/.local/lib ]
   set -gx LD_LIBRARY_PATH $HOME/.local/lib $LD_LIBRARY_PATH
 end
 
-set -gx FZF_DEFAULT_COMMAND "rg --files"
-
-set -gx SPACEFISH_PROMPT_ADD_NEWLINE false
-set -gx SPACEFISH_PACKAGE_SHOW false
-
 # VI-mode (hybrid):
 set -g fish_key_bindings fish_hybrid_key_bindings
 bind -M insert -m default jj force-repaint
 
-which starship > /dev/null
-if [ $status -eq 0 ]
-  eval (starship init fish)
-end
-
-which direnv > /dev/null
-if [ $status -eq 0 ]
-  direnv hook fish | source
-end
-
-set -gx WASMTIME_HOME "$HOME/.wasmtime"
-
-string match -r ".wasmtime" "$PATH" > /dev/null; or set -gx PATH "$WASMTIME_HOME/bin" $PATH
+command -sq starship; and eval (starship init fish)
+command -sq direnv; and direnv hook fish | source
