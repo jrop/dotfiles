@@ -3,18 +3,19 @@ set -e
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-sudo apt update
-sudo apt install -y curl software-properties-common
+sudo apt-get update
+sudo apt-get install -y curl software-properties-common
 
 sudo apt-add-repository --yes ppa:ansible/ansible
 sudo apt-add-repository --yes ppa:mmstick76/alacritty
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -
 echo "deb https://deb.nodesource.com/node_12.x bionic main" > /etc/apt/sources.list.d/nodesource.list
 echo "deb-src https://deb.nodesource.com/node_12.x bionic main" >> /etc/apt/sources.list.d/nodesource.list
 
-sudo apt update
-sudo apt install -y \
+sudo apt-get update
+sudo apt-get install -y \
   alacritty \
   ansible \
   build-essential \
