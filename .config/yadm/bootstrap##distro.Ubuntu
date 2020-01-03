@@ -35,7 +35,7 @@ command -v node >/dev/null 2>&1 || {
 }
 
 command -v rustup >/dev/null 2>&1 || {
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo sh
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs |  sh
 }
 command -v starship >/dev/null 2>&1 || {
   curl -fsSL https://starship.rs/install.sh | sudo bash
