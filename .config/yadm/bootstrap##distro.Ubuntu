@@ -4,7 +4,7 @@ set -e
 export PATH="$HOME/.cargo/bin:$PATH"
 
 sudo apt update
-sudo apt install -y software-properties-common
+sudo apt install -y curl software-properties-common
 
 sudo apt-add-repository --yes ppa:ansible/ansible
 sudo apt-add-repository --yes ppa:mmstick76/alacritty
