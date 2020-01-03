@@ -20,43 +20,49 @@ export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
 export FZF_DEFAULT_COMMAND="rg --files"
 
 function add_ssh_key_to_github() {
-  if [ ! -f ~/.ssh/id_rsa.pub ]; then
-    ssh-keygen -t rsa -b 2048 -N "" -f ~/.ssh/id_rsa
+  if [ ! -f $HOME/.ssh/id_rsa.pub ]; then
+    ssh-keygen -t rsa -b 2048 -N "" -f $HOME/.ssh/id_rsa
   fi
   echo -n 'GitHub password for jrop: '
   read -s pw
-  key=$(cat ~/.ssh/id_rsa.pub)
+  key=$(cat $HOME/.ssh/id_rsa.pub)
   curl -u "jrop:$pw" --data '{"title":"'"(hostname)"'","key":"'"$key"'"}' https://api.github.com/user/keys
 }
 function add_ssh_key_to_gitlab() {
-  if [ ! -f ~/.ssh/id_rsa.pub ]; then
-    ssh-keygen -t rsa -b 2048 -N "" -f ~/.ssh/id_rsa
+  if [ ! -f $HOME/.ssh/id_rsa.pub ]; then
+    ssh-keygen -t rsa -b 2048 -N "" -f $HOME/.ssh/id_rsa
   fi
   echo -n 'GitLab token: '
   read -s tkn
-  key=$(cat ~/.ssh/id_rsa.pub)
+  key=$(cat $HOME/.ssh/id_rsa.pub)
   curl -X POST -H "PRIVATE-TOKEN: $tkn" -H 'Content-Type: application/json' \
     --data "{\"title\": \"$hn\", \"key\": \"$key\"}" "https://gitlab.com/api/v4/user/keys"
 }
-function get_bashit() {
-  git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
-  ~/.bash_it/install.sh --no-modify-config
+function install_bashit() {
+  git clone --depth=1 https://github.com/Bash-it/bash-it.git $HOME/.bash_it
+  $HOME/.bash_it/install.sh --no-modify-config
 }
-function get_nvm() {
+function install_nvm() {
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | PROFILE=/dev/null bash
 }
-function get_fzf() {
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install
+function install_fzf() {
+  git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+  $HOME/.fzf/install
 }
-function get_homebrew() {
+function install_homebrew() {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
-function get_neovim_appimg() {
-  curl -LO https://github.com/neovim/neovim/releases/download/v0.4.2/nvim.appimage
-  chmod u+x nvim.appimage
+function install_neovim_appimg() {
+  nvim_path=$HOME/.local/bin/nvim
+  curl -Lo $nvim_path https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+  chmod u+x $nvim_path
 }
-function get_rustup() {
+function install_neovim_nightly_appimg() {
+  nvim_path=$HOME/.local/bin/nnvim
+  curl -Lo $nvim_path https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+  chmod u+x $nvim_path
+}
+function install_rustup() {
   curl https://sh.rustup.rs -sSf | sh -s -- -y
 }
 
@@ -75,4 +81,4 @@ if [ -f "$HOME/.nvm" ]; then
 fi
 
 # FZF
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f $HOME/.fzf.bash ] && source $HOME/.fzf.bash
