@@ -38,11 +38,11 @@ command -v rustup >/dev/null 2>&1 || {
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo sh
 }
 command -v starship >/dev/null 2>&1 || {
-  sudo curl -fsSL https://starship.rs/install.sh | bash
+  curl -fsSL https://starship.rs/install.sh | sudo bash
 }
 
 command -v yarn >/dev/null 2>&1 || {
-  sudo curl -o- -L https://yarnpkg.com/install.sh | bash
+  curl -o- -L https://yarnpkg.com/install.sh | sudo bash
 }
 
 # Install Hack Font
