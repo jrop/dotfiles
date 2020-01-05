@@ -28,6 +28,7 @@ abbr -a moff "tmux set mouse off"
 abbr -a tclear "clear; and tmux clear-history"
 abbr -a tsn "node -r ts-node/register"
 abbr -a ts-node "node -r ts-node/register"
+abbr -a y "yadm"
 
 abbr -a ldl "tail -f /var/log/system.log"
 abbr -a lct "sudo launchctl"
