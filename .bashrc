@@ -8,16 +8,13 @@ alias mon="tmux set mouse on"
 alias moff="tmux set mouse off"
 alias d="docker"
 alias dc="docker-compose"
-alias kc="kubectl"
-alias kp="kube-prompt"
-alias vi="nvim"
-alias vim="nvim"
+alias k="kubectl"
 
 export EDITOR=nvim
 export HISTCONTROL=ignoreboth
 export PATH="$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
-export FZF_DEFAULT_COMMAND="rg --files"
+command -v rg > /dev/null && export FZF_DEFAULT_COMMAND="rg --files"
 
 function add_ssh_key_to_github() {
   if [ ! -f $HOME/.ssh/id_rsa.pub ]; then
@@ -42,6 +39,9 @@ function install_bashit() {
   git clone --depth=1 https://github.com/Bash-it/bash-it.git $HOME/.bash_it
   $HOME/.bash_it/install.sh --no-modify-config
 }
+function install_gitlab_cli() {
+  curl -sSfL https://raw.githubusercontent.com/makkes/gitlab-cli/master/install.sh | sh -s -- -b "$HOME/.local/bin"
+}
 function install_nvm() {
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | PROFILE=/dev/null bash
 }
@@ -65,11 +65,18 @@ function install_neovim_nightly_appimg() {
 function install_rustup() {
   curl https://sh.rustup.rs -sSf | sh -s -- -y
 }
+function install_starship() {
+  curl -fsSL https://starship.rs/install.sh | bash -s -- -y -b "$HOME/.local/bin"
+}
 
 # Bash-it
-if [ -f "$BASH_IT/bash_it.sh" ]; then 
+if [ -f "$HOME/.bash_it/bash_it.sh" ]; then 
   export BASH_IT="$HOME/.bash_it"
-  export BASH_IT_THEME=minimal
+  if command -v starship > /dev/null; then
+    export BASH_IT_THEME=""
+  else
+    export BASH_IT_THEME=${BASH_IT_THEME:-minimal}
+  fi
   [ -f $BASH_IT/bash_it.sh ] && source $BASH_IT/bash_it.sh
 fi
 
@@ -82,3 +89,5 @@ fi
 
 # FZF
 [ -f $HOME/.fzf.bash ] && source $HOME/.fzf.bash
+
+command -v starship > /dev/null && eval "$(starship init bash)"

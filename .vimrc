@@ -39,6 +39,7 @@ map <Leader>gs :Gstatus<CR>
 map <Leader>is :set expandtab<CR>
 map <Leader>it :set noexpandtab<CR>
 map <Leader>ir gg=G<CR>
+map <Leader>ll :luafile %<CR>
 map <Leader>n :nohlsearch<CR>
 map <Leader>p :Prettier<CR>
 map <Leader>ra :call TermOpenRanger()<CR>

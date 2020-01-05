@@ -28,7 +28,6 @@ abbr -a moff "tmux set mouse off"
 abbr -a tclear "clear; and tmux clear-history"
 abbr -a tsn "node -r ts-node/register"
 abbr -a ts-node "node -r ts-node/register"
-abbr -a vi "nvim"
 
 abbr -a ldl "tail -f /var/log/system.log"
 abbr -a lct "sudo launchctl"
@@ -42,7 +41,7 @@ abbr -a jct "sudo journalctl"
 command -sq lsof; and abbr -a listening "lsof -P -iTCP -sTCP:LISTEN"
 
 set -gx EDITOR nvim
-set -gx FZF_DEFAULT_COMMAND "rg --files"
+command -sq rg; and set -gx FZF_DEFAULT_COMMAND "rg --files"
 set -gx JOBS 13
 set -gx SPACEFISH_PROMPT_ADD_NEWLINE false
 set -gx SPACEFISH_PACKAGE_SHOW false
