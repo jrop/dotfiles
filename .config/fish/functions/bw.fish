@@ -1,5 +1,6 @@
+# Defined in /var/folders/my/bywv_hmn4g1_wwx511dvydzm0000gn/T//fish.6mhJHI/bw.fish @ line 2
 function bw
-    set bw_path (command -s bw)
+	set bw_path (command -s bw)
     if test -n bw_path
         if test "$argv[1]" = "fzf"
             #
@@ -42,4 +43,3 @@ function bw
         return 1
     end
 end
-
