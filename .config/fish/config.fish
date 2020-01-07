@@ -5,7 +5,7 @@ if not functions -q fisher
 end
 
 if status is-interactive; and not set -q TMUX; and command -sq tmux
-  exec tmux
+  tmux attach || exec tmux new
 end
 
 abbr -a code "env TMUX=\"\" code"

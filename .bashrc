@@ -1,7 +1,9 @@
 # Do not start tmux if:
 # 1) We are in an SSH connection (ansible provisioning Vagrant will never terminate because tmux will sit there and not give the connection back)
 # 2) tmux is already running
-[ \( -z "$SSH_CONNECTION" \) -a \( -z "$TMUX" \) ] && tmux
+[ \( -z "$SSH_CONNECTION" \) -a \( -z "$TMUX" \) ] && (
+  command -v tmux > /dev/null && (tmux attach || exec tmux new)
+)
 
 alias dclean="docker images -qf dangling=true | xargs -n 1 docker rmi"
 alias mon="tmux set mouse on"

@@ -15,6 +15,10 @@ function bw
         #
         # FZF
         #
+        if test -z "$BW_SESSION"
+            bw unlock
+        end
+
         set selected_line (
             eval $bw_path list items \
                 | jq '.[] | "\(.name) | username: \(.login.username) | id: \(.id)" ' \
