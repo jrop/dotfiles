@@ -1,5 +1,7 @@
 # jrop/dotfiles
 
+> THIS REPO HAS MOVED TO: https://gitlab.com/jrop/dotfiles
+
 > Dotfiles for bash/fish/git/tmux/{,neo}vim and more!
 
 The philosophy for my dotfiles is: less is more.  I don't do anything crazy,
